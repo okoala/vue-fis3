@@ -1,0 +1,36 @@
+.g-nav {
+    float: left;
+    margin-left: 25px;
+    zoom:1}
+
+.g-nav-switch {
+    display: none;
+    width: 26px;
+    height: 70px;
+    margin-left: 20px;
+    border: 0;
+    background-color: transparent;
+    outline: 0
+}
+
+.g-nav-menu li {
+    float: left;
+    font-size: 16px
+}
+
+.g-nav-menu .current {
+    border-bottom: 1px solid #f60
+}
+
+.g-nav-menu a {
+    display: block;
+    padding: 0 24px;
+    line-height: 70px;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    transition: all .2s ease
+}
+
+.g-nav-menu .current a {
+    color: #f60
+}

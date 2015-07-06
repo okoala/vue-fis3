@@ -29,9 +29,9 @@ let mainCache = Vue.cache('mainCache', {
 
 export default {
     // 获取推荐内容
-    recom : Vue.resource('/Like/Reader/Recom', { cache: mainCache }),
+    recom : Vue.resource('/api/Like/Reader/Recom', { cache: mainCache }),
 
     // 获取36kr的内容
-    kr: Vue.resource('/Like/Reader/GetContent/site_id/48')
+    rss: Vue.resource('/api/Like/Reader/GetContent/site_id/:id')
 
 }

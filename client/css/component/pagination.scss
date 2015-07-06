@@ -1,0 +1,75 @@
+.mod-pagination .next,.mod-pagination .prev {
+    background-image: url(/static/images/sprites/pagination-icons.png)
+}
+
+
+.mod-pagination {
+    height: 30px;
+    margin-top: 20px;
+    font-size: 0;
+    vertical-align: middle
+}
+
+.mod-pagination button {
+    display: inline-block;
+    border: 0;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,.1);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.1);
+    outline: 0
+}
+
+.mod-pagination .next,.mod-pagination .prev,.mod-pagination .submit {
+    width: 60px;
+    height: 30px;
+    overflow: hidden;
+    text-indent: -99em;
+    background-color: #f60;
+    background-repeat: no-repeat
+}
+
+.mod-pagination .submit {
+    text-indent: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    vertical-align: middle
+}
+
+.mod-pagination .prev {
+    background-position: top center
+}
+
+.mod-pagination .next {
+    background-position: center -30px
+}
+
+.mod-pagination button.disabled,.mod-pagination button[disabled] {
+    background-color: #cdd1d5;
+    cursor: default
+}
+
+.pagination-goto,.pagination-status {
+    display: inline-block;
+    height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 14px;
+    line-height: 30px;
+    vertical-align: middle
+}
+
+.pagination-status span {
+    padding: 0 5px
+}
+
+.pagination-goto input {
+    width: 50px;
+    height: 28px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: 0
+}

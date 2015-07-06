@@ -1,7 +1,7 @@
 'use strict';
 
 export default function(Vue) {
-    
+
     let options = {
         // 设置跟节点
         el: 'body',
@@ -11,6 +11,11 @@ export default function(Vue) {
             states: {
                 'index': {
                     url: '/',
+                    component: 'p-index'
+                },
+
+                'rss': {
+                    url: '/:rssId',
                     component: 'p-index'
                 },
 

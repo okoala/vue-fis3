@@ -1,0 +1,88 @@
+.modal-mask {
+    position: fixed;
+    bottom: 0;
+    background: #000;
+    opacity: .1;
+    filter: alpha(opacity=10);
+    z-index: 1000
+}
+
+.modal {
+    width: 440px;
+    background-color: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 8000;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2)
+}
+
+.modal-header {
+    height: 40px;
+    position: relative;
+    padding: 0 14px
+}
+
+.modal-title {
+    float: left;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 500
+}
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    overflow: hidden;
+    background: 0 0;
+    line-height: 24px
+}
+
+.modal-close .icon-close {
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+    background-position: -16px -106px
+}
+
+.modal-body {
+    padding: 20px 14px
+}
+
+.modal-footer {
+    position: relative;
+    height: 31px;
+    padding: 14px;
+    background-color: #f4f4f4
+}
+
+.modal-ctrl {
+    float: right
+}
+
+.modal-ctrl button {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 18px;
+    margin-left: 14px;
+    border: 0;
+    border-radius: 3px;
+    color: #fff
+}
+
+.modal-ctrl .modal-cancel {
+    background-color: #cdd1d5;
+    border-bottom: 1px solid #b3b3b3
+}
+
+.modal-ctrl .modal-submit {
+    background-color: #64c6ff;
+    border-bottom: 1px solid #17a8ff
+}

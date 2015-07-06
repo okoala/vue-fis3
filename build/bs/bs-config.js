@@ -19,7 +19,7 @@ module.exports = {
             "port": 8080
         }
     },
-    "files": ['!public/**/index.html', 'public/**/**'],
+    "files": ['!.dist/**/index.html', '.dist/**/**'],
     "watchOptions": {},
     "server": false,
     "proxy": 'localhost:4000',

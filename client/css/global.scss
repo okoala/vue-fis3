@@ -10,8 +10,7 @@
 
     //基础样式
     'base/reset',
-    'base/type',
-    'base/icon',
+    'base/basic',
 
     'base/animate',
 
@@ -23,24 +22,8 @@
     'util/layout',
 
     // UI 组件
-    'component/badge',
-    'component/reddot',
-    'component/avatar',
-    'component/label',
-    'component/tag',
     'component/btn',
-    'component/btn-group',
-    'component/tips-news',
-    'component/tooltips',
-    'component/table',
-    'component/list',
-    'component/form',
-    'component/checkbox',
-    'component/switch',
-    'component/radio',
-    'component/select',
-    'component/panel',
-    'component/progress',
-    'component/tab',
-    'component/poptips',
-    'component/selector';
+    'component/feed',
+    'component/modal',
+    'component/nav',
+    'component/pagination';

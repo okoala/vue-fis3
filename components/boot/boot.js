@@ -41,7 +41,7 @@ export default function(options) {
     // 若有的http请求头都带上x-csrf-token，增强安全性。
     Vue.http.headers.common['x-csrf-token'] = options._csrf;
     // 设置响应成功的code.
-    Vue.http.response.success['code'] = 0;
+    Vue.http.response.success['status'] = 1;
     // 设置post的为form形式。
     Vue.http.options.emulateJSON = true;
 }

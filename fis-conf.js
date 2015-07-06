@@ -11,7 +11,7 @@ var plugins = {
 fis
     // 排除指定目录
     .set('project.files', ['**', '.**', '.**/**'])
-    .set('project.ignore', ['node_modules/**', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
+    .set('project.ignore', ['node_modules/**', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
     // 把scss映射为css
     .set('project.ext', {
         scss : 'css'
@@ -50,7 +50,7 @@ fis
 
     .match(/.*scss$/i, {
         rExt: '.css', // from .scss to .css
-        parser: fis.plugin('sass', {
+        parser: fis.plugin('sass3', {
             //fis-parser-sass option
         })
     })
