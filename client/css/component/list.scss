@@ -1,0 +1,198 @@
+@import
+
+    '../base/mixin',
+    '../base/variable';
+
+.ui-list {
+    width: 100%;
+
+    background-color: #fff;
+    > li {
+        line-height: $line-height-txt;
+
+        position: relative;
+
+        display: -webkit-box;
+        display:         box;
+
+        margin-left: $list-padding;
+    }
+    .ui-badge,
+    .ui-reddot,
+    .ui-btn {
+        margin-left: $list-padding;
+    }
+}
+.ui-list-pure > li {
+    display: block;
+}
+/*文字列表*/
+.ui-list-text > li,
+.ui-list-pure > li {
+    font-size: $font-size-info;
+
+    position: relative;
+
+    padding-top: $txt-padding-top;
+    padding-right: $list-padding;
+    padding-bottom: $txt-padding-bottom;
+
+    -webkit-box-align: center;
+}
+.ui-list-text h4,
+.ui-list-text p {
+    -webkit-box-flex: 1;
+}
+/*通栏列表*/
+.ui-list-cover > li {
+    margin-left: 0;
+    padding-left: $list-padding;
+}
+.ui-list > li.ui-border-t:first-child,
+.ui-list > li:first-child > .ui-border-t {
+    border: none;
+    background-image: none;
+}
+/*列表缩略图*/
+.ui-list-thumb,
+.ui-list-thumb-s,
+.ui-list-img,
+.ui-list-icon {
+    @include content-img;
+
+    position: relative;
+
+    margin: $list-img-margin;
+}
+.ui-list-thumb {
+    width: $list-thumb-width;
+    height: $list-thumb-height;
+}
+/*列表普通图片*/
+.ui-list-img {
+    width: $list-img-width;
+    height: $list-img-height;
+}
+.ui-list-thumb-s {
+    width: $list-thumb-width-s;
+    height: $list-thumb-height-s;
+}
+/*列表icon*/
+.ui-list-icon {
+    width: $list-icon-width;
+    height: $list-icon-width;
+}
+.ui-list .ui-avatar,
+.ui-list .ui-avatar-s,
+.ui-list .ui-avatar-lg {
+    margin: $list-img-margin;
+}
+/*列表主要信息*/
+.ui-list-info {
+    display: -webkit-box;
+
+    padding-top: $txt-padding-top;
+    padding-bottom: $txt-padding-bottom;
+
+    -webkit-box-flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+}
+.ui-list-text .ui-list-info {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.ui-list li h4 {
+    font-size: $font-size-info;
+}
+
+.ui-list:not(.ui-list-text) li > p {
+    font-size: $font-size-info;
+
+    color: $txt-info;
+}
+
+/*列表按压态*/
+
+.ui-list-active > li:active,
+.ui-list li.active {
+    margin-left: 0;
+    padding-left: $list-padding;
+
+    background-color: $active-bg;
+}
+
+.ui-list-active > li:active,
+.ui-list-link > li:active,
+.ui-list-active > li:active .ui-border-t,
+.ui-list-link > li:active .ui-border-t,
+.ui-list-active > li:active + li.ui-border-t,
+.ui-list-link > li:active + li.ui-border-t,
+.ui-list-active > li:active + .ui-border-t,
+.ui-list-link > li:active + .ui-border-t,
+li.ui-list-item-link:active,
+li.ui-list-item-link:active .ui-border-t,
+li.ui-list-item-link:active + li.ui-border-t,
+li.ui-list-item-link:active + .ui-border-t {
+    border-top-color: $active-bg;
+    background-image: none;
+}
+
+.ui-list-active > li:active,
+.ui-list-link > li:active,
+li.ui-list-item-link:active {
+    margin-left: 0;
+    padding-left: $list-padding;
+
+    background-color: $active-bg;
+}
+
+/*连接列表*/
+.ui-list-link > li:after {
+    @include arrowlink;
+}
+
+.ui-list-link > li {
+    padding-right: $list-link-padding;
+}
+/*选中态*/
+.ui-list > li.selected:after {
+    position: absolute;
+    top: 50%;
+    right: $list-padding;
+
+    display: block;
+
+    width: 14px;
+    height: 12px;
+    margin-top: -4px;
+
+    content: '';
+
+    background: url(http://i.gtimg.cn/vipstyle/frozenui/1.2.0/img/icon.png?_bid=306) no-repeat -100px 0;
+    -webkit-background-size: 150px auto;
+}
+/*  功能类 */
+
+.ui-list-function > li {
+    margin-left: $list-function-padding;
+    padding-right: $list-function-padding;
+
+    -webkit-box-align: center;
+}
+.ui-list-function.ui-list-cover > li {
+    margin-left: 0;
+    padding-right: $list-function-padding;
+    padding-left: $list-function-padding;
+}
+.ui-list-function.ui-list-active > li:active,
+.ui-list-function li.active {
+    padding-left: $list-function-padding;
+}
+.ui-list-function.ui-list-link > li {
+    padding-right: $list-function-link-padding;
+}
+.ui-list-function > li:after,
+.ui-list-function > li.selected:after {
+    right: $list-function-padding;
+}

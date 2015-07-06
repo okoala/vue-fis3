@@ -1,0 +1,40 @@
+@import
+
+    '../base/mixin',
+    '../base/variable';
+
+.ui-progress {
+    font-size: 0;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 2px;
+
+    background-color: #e2e2e2;
+}
+
+.ui-progress span {
+    font-size: 0;
+
+    display: block;
+
+    width: 0;
+    height: 100%;
+
+    background: #65d521;
+}
+.ui-grid-trisect li .ui-progress,
+.ui-grid-halve li .ui-progress {
+    position: absolute;
+    z-index: $z-index-progress;
+    bottom: 0;
+
+    height: 13px;
+
+    border: 5px solid rgba(248,248,248,.9);
+    span {
+        border-radius: 3px;
+    }
+}

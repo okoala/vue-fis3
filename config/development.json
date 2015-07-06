@@ -1,0 +1,8 @@
+{
+	"env": "development",
+	"dest": "./.dist",
+	"api_target": "http://idesign.qq.com",
+	"viewCache": false,
+	"LSCache": false,
+	"combo": false
+}

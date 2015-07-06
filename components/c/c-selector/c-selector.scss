@@ -1,0 +1,73 @@
+@import
+
+    '../../../client/css/base/mixin',
+    '../../../client/css/base/variable';
+
+.c-selector{
+    .lis{
+        border-bottom: 1px solid rgb(245,246,247);
+
+        &:last-child{
+            border-bottom:0;
+        }
+
+        > h3{
+            height: 0.35rem;
+            line-height: 0.35rem;
+            padding: 0 0.1rem;
+            text-indent: 0.08rem;
+            background: #fff;
+            font-size: 0.15rem;
+            color: #000;
+
+            i{
+                line-height: 0.35rem;
+                float: right;
+                font-size: 0.126rem;
+                font-weight: lighter;
+                color: rgb(164,165,166);
+                -webkit-text-stroke-width: 0;
+                text-align: center;
+                margin-right: 0.04rem;
+            }
+        }
+
+        > .shown{
+            background: #a6a5a4;
+            i{
+                color: #fff;
+            }
+        }
+
+        .model{
+            li{
+                background: rgb(227,228,230);
+                height: 0.35rem;
+                line-height: 0.35rem;
+                border-bottom: 1px solid rgb(245,246,247);
+                font-size: 0.144rem;
+                padding:0 0.1rem;
+                text-indent: 0.17rem;
+
+                &:last-child{
+                    border-bottom:0;
+                    font-size: 0.136rem;
+                };
+            }
+
+            .active{
+                border-bottom: 1px solid rgb(227,228,229);
+                h3{
+                    background: rgb(164,165,166);
+
+                    i{
+                        -webkit-transform: rotate(180deg);
+                        transform: rotate(180deg);
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+

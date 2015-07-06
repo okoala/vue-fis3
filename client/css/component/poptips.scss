@@ -1,0 +1,67 @@
+@import
+
+    '../base/mixin',
+    '../base/variable';
+
+.ui-poptips {
+    position: fixed;
+    z-index: $z-index-poptips;
+    top: 0;
+    left: 0;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px;
+
+    -webkit-transition: all .5s;
+    -webkit-transform: translateY(-40px);
+
+    opacity: 0;
+}
+.ui-poptips.show {
+    -webkit-transform: translateY(0px);
+
+    opacity: 1;
+}
+.ui-poptips-cnt {
+    @include nowrap;
+
+    font-size: $font-size-info;
+    line-height: 40px;
+
+    height: 40px;
+
+    text-align: center;
+
+    color: #fff;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: rgba(0,0,0,.6);
+    i {
+        display: inline-block;
+
+        width: 32px;
+        height: 1px;
+
+        vertical-align: top;
+        &:before {
+            line-height: 40px;
+
+            margin-right: 2px;
+            margin-left: 4px;
+
+            color: #fff;
+        }
+    }
+}
+
+.ui-poptips-info i:before {
+    content: '\e609';
+}
+.ui-poptips-success i:before {
+    content: '\e60a';
+}
+.ui-poptips-warn i:before {
+    content: '\e60b';
+}
+

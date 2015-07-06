@@ -1,0 +1,17 @@
+@import
+
+    '../base/mixin',
+    '../base/variable';
+
+/* 箭头链接 */
+.ui-arrowlink {
+    position: relative;
+
+    &:before {
+        @include arrowlink;
+    }
+
+    &.active {
+        background: #e5e6e7;
+    }
+}

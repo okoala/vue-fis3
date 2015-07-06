@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+.idea
+*.bak
+*.tmp
+Thumbs.db
+output
+.vagrant
+npm-debug.log*
+/.svn
+/tmp
+.tmp
+.dist

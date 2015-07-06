@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+        <!-- 关闭手机号自动识别 -->
+        <meta name="format-detection" content="telephone=no"/>
+
+        <!-- Set render engine for 360 browser -->
+        <meta name="renderer" content="webkit">
+
+        <!-- No Baidu Siteapp-->
+        <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+        <title>__FRAMEWORK_NAME__</title>
+
+        <link rel="stylesheet" type="text/css" href="css/global.scss">
+        <meta name="description" content="集成解决方案" />
+        <meta name="keywords" content="集成解决方案, 模块化开发,fis3,spa,vue" />
+    </head>
+    <body>
+        <div v-view></div>
+        <script src="libs/scrat.js"></script>
+        <script>
+            /*
+             * 项目构建时，_‍_FRAMEWOR‍K_CONFIG__变量会被替换成框架配置，包括依
+             * 赖树、别名表、combo连接形式、配置文件等，这样就可以对资源请求进行
+             * 按需、合并等优化了
+             */
+            require.config(__FRAMEWORK_CONFIG__);
+
+            /*
+             * 启动入口
+             * require.async函数会根据require.config中的依赖关系去加载这些模
+             * 块及其依赖的模块（包括对应的css），都完成后才会执行回调
+             */
+            require.async(['boot'], function(boot) {
+                boot({
+                    _csrf: "{{csrfToken}}"
+                });
+            });
+        </script>
+
+    </body>
+</html>

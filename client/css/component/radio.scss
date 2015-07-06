@@ -1,0 +1,59 @@
+@import
+
+    '../base/mixin',
+    '../base/variable';
+
+.ui-radio {
+    line-height: 25px;
+
+    display: inline-block;
+}
+.ui-radio input {
+    position: relative;
+
+    display: inline-block;
+    overflow: visible;
+
+    width: 26px;
+    height: 26px;
+    margin-right: 8px;
+
+    vertical-align: middle;
+
+    border: 0;
+    outline: none;
+    background: none;
+
+    -webkit-appearance: none;
+}
+.ui-radio input:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 24px;
+    height: 24px;
+
+    content: '';
+
+    border: 1px solid #dfe0e1;
+    border-radius: 13px;
+    background-clip: padding-box;
+}
+.ui-radio input:checked:after {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+
+    display: block;
+
+    width: 14px;
+    height: 14px;
+
+    content: '';
+
+    border-radius: 7px;
+    background: $positive-bg;
+}

@@ -1,0 +1,37 @@
+@import
+
+    '../base/mixin',
+    '../base/variable';
+
+/* 文字截断 */
+.ui-nowrap {
+    overflow: hidden;
+
+    max-width: 100%;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ui-nowrap-flex {
+    display: -webkit-box;
+    overflow: hidden;
+
+    height: inherit;
+
+    text-overflow: ellipsis;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    -webkit-box-flex: 1;
+}
+
+.ui-nowrap-multi {
+    display: -webkit-box;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}

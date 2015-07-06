@@ -1,0 +1,65 @@
+@import
+
+    '../base/mixin',
+    '../base/variable';
+
+a {
+    color: $txt-link;
+}
+em {
+    color: $txt-highlight;
+}
+::-webkit-input-placeholder {
+    color: $txt-muted;
+}
+
+/**
+ * 文字
+ */
+h1 {
+    font-size: .18rem;
+}
+h2 {
+    font-size: .17rem;
+}
+h3 {
+    font-size: .16rem;
+}
+h4 {
+    font-size: .15rem;
+}
+h5 {
+    font-size: .14rem;
+}
+.ui-txt-sub {
+    font-size: .12rem;
+}
+.ui-txt-default {
+    color: $txt-default;
+}
+.ui-txt-info {
+    color: $txt-info;
+}
+.ui-txt-muted {
+    color: $txt-muted;
+}
+.ui-txt-warning {
+    color: $txt-warning;
+}
+.ui-txt-feeds {
+    color: $txt-feeds;
+}
+/* 同em */
+.ui-txt-highlight {
+    color: $txt-highlight;
+}
+.ui-txt-left {
+    text-align: left;
+}
+.ui-txt-right {
+    text-align: right;
+}
+.ui-txt-center {
+    text-align: center;
+}
+

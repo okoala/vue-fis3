@@ -1,0 +1,155 @@
+@import
+
+    '../base/mixin',
+    '../base/variable';
+
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+hgroup,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: $font-size-root;
+}
+
+html,
+body{
+    height: 100%; //利用这个，body的children设置背景颜色可以铺满整个屏幕
+}
+
+body {
+    font-family: $body-font;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+
+    -webkit-user-select: none;
+
+    color: $txt-default;
+    outline: 0;
+    background-color: $stable-bg;
+
+    -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(35,167,217,.5);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+
+    outline: 0;
+}
+
+button {
+    border: 0;
+    background: none;
+
+    -webkit-appearance: none;
+}
+
+a {
+    text-decoration: none;
+
+    -webkit-touch-callout: none;
+}
+
+:focus {
+    outline: 0;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: 'liga','kern';
+}
