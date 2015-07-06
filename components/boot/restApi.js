@@ -32,6 +32,6 @@ export default {
     recom : Vue.resource('/Like/Reader/Recom', { cache: mainCache }),
 
     // 获取36kr的内容
-    36kr: Vue.resource('/Like/Reader/GetContent/site_id/48')
+    kr: Vue.resource('/Like/Reader/GetContent/site_id/48')
 
 }
