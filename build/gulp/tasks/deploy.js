@@ -13,5 +13,5 @@ gulp.task('release', ['webpack'], shell.task('fis3 release prod -d ' + config.de
 gulp.task('deploy', ['release'], function() {
     shell.task('npm run start', {
         cwd: config.dest
-    });
+    })();
 });
