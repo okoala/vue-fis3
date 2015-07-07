@@ -6,7 +6,7 @@ var plugins = {
     define : require('./build/fis/postprocessor/define.js'),
     frameworkConf : require('./build/fis/postpackager/framework-conf.js')
 };
-
+console.log('combo', config.LSCache);
 /****************环境变量*****************/
 fis
     // 排除指定目录
@@ -161,7 +161,7 @@ fis
 
 /**********************测试/生产环境下*****************/
 fis
-    .media('prod')
+    .media('production')
 
     .match(/\.nvmrc$/, {
         release : '.nvmrc'

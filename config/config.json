@@ -18,7 +18,6 @@
         }
     }],
     "deploy": {
-
         "production": {
             "user": "root",
             "host": "23.88.3.62",

@@ -8,7 +8,7 @@ var config = require('../../../config');
 gulp.task('webpack', shell.task('webpack --config ../../webpack/webpack.config.js'));
 // start
 // 发布相关
-gulp.task('release', ['webpack'], shell.task('fis3 release prod -d ' + config.dest));
+gulp.task('release', ['webpack'], shell.task('fis3 release production -d ' + config.dest));
 
 gulp.task('deploy', ['release'], shell.task('npm run start', {
     cwd: config.dest
