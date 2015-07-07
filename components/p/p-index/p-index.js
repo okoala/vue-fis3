@@ -43,28 +43,40 @@ Vue.component('p-index', {
     },
     ready() {
         let params = this.$data.$router.params;
-        let rssId;
+        let rssId = params && params.rssId ? params.rssId : 0;
 
-        if (!params || !params.rssId) {
+        let setData = function(data) {
+            this.currentRss = this.rss.filter(function(item) {
+                return item.id == rssId;
+            });
+
+            if (this.currentRss) {
+                this.currentRss = this.currentRss[0];
+            } else {
+                alert('参数错误');
+                return;
+            }
+
+            data.items = this._mapFeed(this._mapHost(data.items));
+
+            this.currentRss.isActive = true;
+            this.currentRss.data = data;
+
+            console.log(data);
+        }
+
+        if (rssId == 0) {
             restApi.recom.get()
                 .success(res => {
-                    let data = res.data;
-                    data.items = this._mapFeed(this._mapHost(data.items));
-
-                    this.currentRss = this.rss[0];
-                    this.currentRss.data = data;
-                    this.rss[0].isActive = true;
-                    console.log(res.data);
+                    setData.call(this, res.data);
                 })
                 .error(err => {
 
                 });
         } else {
-            rssId = params.rssId;
-
             restApi.rss.get({id: rssId})
                 .success(res => {
-                    console.log(res);
+                    setData.call(this, res.data);
                 })
                 .error(err => {
 
@@ -128,9 +140,9 @@ Vue.component('p-index', {
             return [todayData, yestodayData, beforeData];
         },
 
-        onTap(item, index) {
-            if (item.params) Vue.go(item.type, item.params);
-            else Vue.go(item.type);
+        chooseRss(item, index) {
+            let rssId = item.id;
+            Vue.go('rss', {rssId: rssId});
         }
     }
 });

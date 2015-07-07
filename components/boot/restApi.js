@@ -32,6 +32,6 @@ export default {
     recom : Vue.resource('/api/Like/Reader/Recom', { cache: mainCache }),
 
     // 获取36kr的内容
-    rss: Vue.resource('/api/Like/Reader/GetContent/site_id/:id')
+    rss: Vue.resource('/api/Like/Reader/GetContent/site_id/:id', { cache: mainCache })
 
 }

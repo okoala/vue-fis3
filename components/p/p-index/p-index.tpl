@@ -7,7 +7,7 @@
             </div>
             <div class="feed-sidebar-list">
                 <ul>
-                    <li v-repeat="item: rss" v-class="current: item.isActive" v-on="click: chooseRss(item)">
+                    <li v-repeat="item: rss" v-class="current: item.isActive" v-on="click: chooseRss(item, $index)">
                         <span class="feed-logo">
                             <img src="{{item.image}}" alt="{{item.id}}" />
                         </span>
