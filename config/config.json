@@ -18,10 +18,11 @@
         }
     }],
     "deploy": {
-        
+
         "production": {
             "user": "root",
             "host": "23.88.3.62",
+            "port": "10837",
             "ref" : "origin/master",
             "repo": "https://github.com/okoala/fis3-vue.git",
             "path": "/root",

@@ -10,8 +10,9 @@
     "webpack": "gulp --gulpfile build/gulp/tasks/dev.js webpack",
     "clean": "fis3 release --clean",
     "start": "npm install && pm2 startOrReload ./config/config.json --env production",
-    "deploy": "pm2 deploy ./config/config.json prod update",
-    "revert": "pm2 deploy ./config/config.json prod revert",
+    "setup": "pm2 deploy ./config/config.json production setup",
+    "deploy": "pm2 deploy ./config/config.json production update",
+    "revert": "pm2 deploy ./config/config.json production revert",
     "list": "pm2 deploy ./config/config.json production list"
   },
   "dependencies": {
