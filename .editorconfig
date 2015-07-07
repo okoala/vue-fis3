@@ -13,6 +13,6 @@ indent_size = 4
 trim_trailing_whitespace = true
 
 #yml格式为两个空格
-[*.yml]
+[*.{yml,md}]
 indent_style = space
 indent_size = 2
