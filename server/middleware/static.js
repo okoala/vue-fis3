@@ -1,11 +1,15 @@
 'use strict';
 
 var express = require('express'),
+    path = require('path'),
     app = require('../index');
 
 module.exports = function (dir) {
-    dir = dir || '/public';
-    return express.static(app.get('root') + dir, {
+    if (!/^[\/|\\]/.test(dir)) {
+        dir = path.join(app.get('root'), '/', dir);
+    }
+    
+    return express.static(dir, {
         maxAge: app.get('env') === 'production' ? Infinity : 0
     });
 };

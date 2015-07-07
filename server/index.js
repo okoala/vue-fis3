@@ -60,8 +60,8 @@ app.use(middleware.router({index: path.resolve(config.dest, 'public/' + meta.nam
 
 app.use('/api', middleware.proxy({target: config.api_target}));
 
-app.use('/public', middleware.static(path.join('/', config.dest, '/public')));
-app.use('/static', middleware.static(path.join('/', config.dest, '/static')));
+app.use('/public', middleware.static(path.join(config.dest, '/public')));
+app.use('/static', middleware.static(path.join(config.dest, '/static')));
 app.use(middleware.error());
 
 if (require.main === module) {
