@@ -19,11 +19,13 @@ fis
     .set('name', meta.name)
     .set('version', meta.version)
     .set('urlPrefix', config.urlPrefix)
-    .set('framework.cache', config.LSCache) //开启localstorage缓存
-    .set('framework.combo', config.combo) // 开启合并
-    .set('framework.comboPattern', config.comboPattern)
-    .set('framework.urlPattern', config.urlPattern) // 静态资源加载路径模式
-    .set('framework.urlPrefix', config.urlPrefix) // 静态资源加载路径模式
+    .set('framework', {
+        cache: config.LSCache, //开启localstorage缓存
+        combo: config.combo, // 开启合并
+        comboPattern: config.comboPattern,
+        urlPattern: config.urlPattern, // 静态资源加载路径模式
+        urlPrefix: config.urlPrefix // 静态资源加载路径模式
+    });
 
 // 测试环境屏蔽Hash
 if (config.env === 'development') {
