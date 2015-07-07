@@ -10,8 +10,6 @@ gulp.task('webpack', shell.task('webpack --config ../../webpack/webpack.config.j
 // 发布相关
 gulp.task('release', ['webpack'], shell.task('fis3 release prod -d ' + config.dest));
 
-gulp.task('deploy', ['release'], function() {
-    shell.task('npm run start', {
-        cwd: config.dest
-    })();
+gulp.task('deploy', ['release'], shell.task('npm run start', {
+    cwd: config.dest
 });
