@@ -25,7 +25,7 @@
             "port": "10837",
             "ref" : "origin/master",
             "repo": "https://github.com/okoala/fis3-vue.git",
-            "path": "/root",
+            "path": "/root/fis3-vue",
             "post-deploy": "source ~/.nvm/nvm.sh && npm install --verbose && export NODE_ENV=production && gulp --gulpfile build/gulp/tasks/deploy.js deploy_prod"
         }
     },
