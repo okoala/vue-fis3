@@ -46,7 +46,7 @@ Vue.component('p-index', {
         let rssId = params && params.rssId ? params.rssId : 0;
 
         let setData = function(data) {
-            this.currentRss = this.rss.filter(function(item) {
+            this.currentRss = this.rss.filter(item => {
                 return item.id == rssId;
             });
 
@@ -86,7 +86,7 @@ Vue.component('p-index', {
     methods: {
         _mapHost(data) {
             let originalHost = 'http://idesign.qq.com';
-            data.forEach(function(item) {
+            data.forEach(item => {
                 item.thumb = originalHost + item.thumb;
                 item.thumb_src = originalHost + item.thumb_src;
                 item.url = originalHost + item.url;
@@ -124,7 +124,7 @@ Vue.component('p-index', {
                 data: []
             };
 
-            data.forEach(function(item, index) {
+            data.forEach((item, index) => {
                 let _date;
                 _date = item.create_on && item.create_on.substring(0, 10) ? item.create_on.substring(0, 10) : bDate;
 
