@@ -8,6 +8,7 @@
     "dev": "gulp --gulpfile build/gulp/tasks/dev.js dev",
     "debug": "gulp --gulpfile build/gulp/tasks/dev.js debug",
     "webpack": "gulp --gulpfile build/gulp/tasks/dev.js webpack",
+    "clean": "fis3 release --clean",
     "start": "npm install && pm2 startOrReload ./config/config.json --env production",
     "deploy": "pm2 deploy ./config/config.json prod update",
     "revert": "pm2 deploy ./config/config.json prod revert",

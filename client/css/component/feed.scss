@@ -166,7 +166,7 @@
     height: 212px;
     line-height: 212px;
     background-color: #f4f4f4;
-    background-image: url(/static/images/icons/icon-thumb-default.png);
+    background-image: url(../img/icon-thumb-default.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -199,7 +199,7 @@
     width: 41px;
     height: 26px;
     outline: 0;
-    background: url(/static/images/icons/icon-gif-player.png) center center no-repeat
+    background: url(../img/icon-gif-player.png) center center no-repeat
 }
 
 .feed-delete {
@@ -209,8 +209,8 @@
     overflow: hidden;
     text-indent: -99em;
     background-color: transparent;
-    background-image: url(/static/images/sprites/icons-sprite.png);
-    background-image: -webkit-image-set(url(/static/images/sprites/icons-sprite.png) 1x,url(/static/images/sprites/icons-sprite-2x.png) 2x);
+    background-image: url(../img/icons-sprite.png);
+    background-image: -webkit-image-set(url(../img/icons-sprite.png) 1x,url(../img/icons-sprite-2x.png) 2x);
     background-repeat: no-repeat;
     background-position: 0 -90px
 }
@@ -226,7 +226,7 @@
 }
 
 .feed-thumb-player.playing,.feed-thumb-player:hover {
-    background: url(/static/images/icons/icon-gif-playing.png) center center no-repeat
+    background: url(../img/icon-gif-playing.png) center center no-repeat
 }
 
 .feed-access {
@@ -331,8 +331,8 @@
 .feed-item-count .feed-fav {
     margin-right: 12px;
     padding-right: 14px;
-    background: url(/static/images/icons/icon-fav-marker.png) right center no-repeat;
-    background-image: -webkit-image-set(url(/static/images/icons/icon-fav-marker.png) 1x,url(/static/images/icons/icon-fav-marker-2x.png) 2x)
+    background: url(../img/icon-fav-marker.png) right center no-repeat;
+    background-image: -webkit-image-set(url(../img/icon-fav-marker.png) 1x,url(../img/icon-fav-marker-2x.png) 2x)
 }
 
 .feed-item-count .g-icon {

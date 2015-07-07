@@ -12,7 +12,6 @@
                             <img src="{{image}}" alt="{{id}}" />
                         </span>
                         <span class="feed-name">{{name}}</span>
-                        <span class="feed-update-count"></span>
                         <a class="feed-url" href="{{url}}" title="{{name}}" target="_blank">
                             <i class="g-icon icon-link"></i>
                         </a>
