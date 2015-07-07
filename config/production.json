@@ -2,7 +2,7 @@
 	"env": "production",
 	"dest": "/root/fis3-vue",
 	"api_target": "http://idesign.qq.com",
-	"viewCache": true,
+	"viewCache": "memory",
 	"LSCache": true,
 	"combo": true
 }
