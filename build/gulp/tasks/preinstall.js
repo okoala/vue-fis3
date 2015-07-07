@@ -10,7 +10,7 @@ gulp.task('preinstall', shell.task([
     'npm i -g fis-optimizer-uglify-js --verbose',
     'npm i -g fis-optimizer-html-minifier --verbose',
     'npm i -g fis-optimizer-clean-css --verbose',
-    'npm i -g xiangshouding/fis-parser-babel --verbose',
+    'npm i -g fis-parser-babel2 --verbose',
     'npm i -g webpack --verbose',
 
     'npm i -g node-dev --verbose',
