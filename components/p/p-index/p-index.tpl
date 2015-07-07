@@ -7,12 +7,12 @@
             </div>
             <div class="feed-sidebar-list">
                 <ul>
-                    <li v-repeat="rss" v-class="current: isActive">
+                    <li v-repeat="item: rss" v-class="current: item.isActive" v-on="click: chooseRss(item)">
                         <span class="feed-logo">
-                            <img src="{{image}}" alt="{{id}}" />
+                            <img src="{{item.image}}" alt="{{item.id}}" />
                         </span>
-                        <span class="feed-name">{{name}}</span>
-                        <a class="feed-url" href="{{url}}" title="{{name}}" target="_blank">
+                        <span class="feed-name">{{item.name}}</span>
+                        <a class="feed-url" href="{{item.url}}" title="{{item.name}}" target="_blank">
                             <i class="g-icon icon-link"></i>
                         </a>
                     </li>

@@ -484,66 +484,6 @@
     filter: alpha(opacity=100)
 }
 
-@media screen and (max-width: 1071px) {
-    .g-nav {
-        background:url(../img/icon-nav-marker.png) left center no-repeat;
-        background-image: -webkit-image-set(url(../img/icon-nav-marker.png) 1x,url(../img/icon-nav-marker-2x.png) 2x)
-    }
-
-    .g-nav-switch {
-        display: block
-    }
-
-    .add-site span,.g-nav-menu {
-        display: none
-    }
-
-    .g-nav-menu {
-        position: absolute;
-        left: 24px;
-        top: 64px;
-        border: 1px solid #e0e0e0;
-        border-bottom: 0 none
-    }
-
-    .layscroll .g-nav-menu {
-        top: 38px
-    }
-
-    .g-nav-menu li {
-        position: relative;
-        float: none;
-        width: 86px;
-        height: 36px;
-        margin-top: -1px;
-        background-color: #fff;
-        border-top: 1px solid #e0e0e0;
-        border-bottom: 1px solid #e0e0e0;
-        vertical-align: top
-    }
-
-    .g-nav-menu .current {
-        z-index: 10;
-        border-color: #f8d4bc;
-        background-color: #fff5ee
-    }
-
-    .g-nav-menu a {
-        padding-left: 15px;
-        line-height: 36px
-    }
-
-    .g-nav-menu .current a {
-        border: 0
-    }
-
-    .add-site {
-        margin-right: 20px;
-        background: url(../img/icon-nav-marker.png) right center no-repeat;
-        background-image: -webkit-image-set(url(../img/icon-nav-marker.png) 1x,url(../img/icon-nav-marker-2x.png) 2x)
-    }
-}
-
 .mobile-toolbar {
     display: none;
     position: fixed;

@@ -32,7 +32,13 @@ Vue.component('p-index', {
                 desc: 'UI中国 - 国内最专业的UI设计平台',
                 isActive: false,
             }],
-            currentRss: {}
+            currentRss: {
+                data: {
+                    current_page: null,
+                    items: [],
+                    page_count: null
+                }
+            }
         }
     },
     ready() {
@@ -95,7 +101,7 @@ Vue.component('p-index', {
             };
 
             let yestodayData = {
-                dataName: '今天',
+                dataName: '昨天',
                 dateTime: yDate,
                 data: []
             };
