@@ -163,14 +163,6 @@ fis
 fis
     .media('prod')
 
-    .match(/^\/config\/(.*)$/, {
-        release : '/config/$1'
-    })
-
-    .match(/^\/server\/(.*)$/, {
-        release : '/server/$1'
-    })
-
     .match(/\.nvmrc$/, {
         release : '.nvmrc'
     })
@@ -208,4 +200,16 @@ fis
 
     .match('*.png', {
         optimizer: fis.plugin('png-compressor')
+    })
+
+    // server文件不编译
+    .match(/^\/config\/(.*)$/, {
+        useCompile: false,
+        release : '/config/$1'
+    })
+
+    // server文件不编译
+    .match(/^\/server\/(.*)$/, {
+        useCompile: false,
+        release : '/server/$1'
     });
