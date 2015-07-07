@@ -42,7 +42,7 @@ fis.hook('module', {
 /****************语言编译*****************/
 fis
 
-    .match(/(.*\.js)$/i, {
+    .match(/\.js$/i, {
         // 设置js文件为babel解析，支持es6的写法。
         parser: fis.plugin('babel'),
 
@@ -50,7 +50,7 @@ fis
         postprocessor: plugins.define
     })
 
-    .match(/.*scss$/i, {
+    .match(/\.scss$/i, {
         rExt: '.css', // from .scss to .css
         parser: fis.plugin('sass3', {
             //fis-parser-sass option
@@ -171,7 +171,7 @@ fis
         useHash: true
     })
 
-    .match('*.(html|tpl)', {
+    .match(/\.(html|tpl)$/, {
         useHash: false,
 
         // 指定压缩插件 fis-optimizer-html-minifier
@@ -185,7 +185,7 @@ fis
         })
     })
 
-    .match('*.js', {
+    .match(/\.js$/, {
         // 指定压缩插件 fis-optimizer-uglify-js
         optimizer: fis.plugin('uglify-js', {
             // option of uglify-js
@@ -194,11 +194,11 @@ fis
         lint: fis.plugin('jshint')
     })
 
-    .match('*.{css,scss}', {
+    .match(/\.(css|scss)$/, {
         optimizer: fis.plugin('clean-css')
     })
 
-    .match('*.png', {
+    .match(/\.png$/, {
         optimizer: fis.plugin('png-compressor')
     })
 
