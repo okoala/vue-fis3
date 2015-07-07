@@ -163,8 +163,16 @@ fis
 fis
     .media('prod')
 
-    .match("**",{
-        release: true
+    .match(/^\/config\/(.*)$/, {
+        release : '/config/$1'
+    })
+
+    .match(/^\/server\/(.*)$/, {
+        release : '/server/$1'
+    })
+
+    .match(/\.nvmrc$/, {
+        release : '.nvmrc'
     })
 
     .match(/^\/client\/(.*)$/, {
