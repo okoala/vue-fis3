@@ -71,7 +71,7 @@
     // 回滚操作
     npm run revert
 
-    // 服务器重启服务
+    // 服务器启动/重启服务
     npm run start
 
 ------
