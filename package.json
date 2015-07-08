@@ -26,7 +26,7 @@
     "lusca": "^1.1.1",
     "snabbt.js": "^0.5.4",
     "swig": "^1.4.2",
-    "vue": "git+https://github.com/yyx990803/vue.git#9259325",
+    "vue": "^0.12.7",
     "vue-resource": "git://github.com/okoala/vue-resource.git",
     "vue-view": "git://github.com/okoala/vue-view.git",
     "webpack": "^1.9.12"
