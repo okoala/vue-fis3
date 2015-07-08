@@ -31,6 +31,13 @@ gulp.task('inspector-brk', function() {
     }, 12000);
 });
 
+gulp.task('fis3-debug', function() {
+    shell.task('node-inspector --web-port=8081', {
+        cwd: config.root
+    })();
+
+    shell.task(path.join('node --debug ' + process.env['APPDATA'], 'npm/node_modules/fis3/bin/fis.js') + ' release -w -d ' + path.resolve(config.root, config.dest))();
+});
 gulp.task('fis3-server', function() {
     shell.task('node-inspector --web-port=8081', {
         cwd: config.root
