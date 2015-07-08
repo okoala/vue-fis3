@@ -59,6 +59,7 @@
 
     // 运行项目
     cd fis3-vue
+    npm install
     npm run dev
 
     // 初始化服务器环境
