@@ -88,49 +88,11 @@
       使用的时候可以直接require('vue'),require('vue-resource')。
       当然你需要确认库是否已经在node_modules里了。
 
-    2. 目录结构
-      │  
-      ├─.dist (fis构建后文件)
-      │
-      ├─.tmp (webpack临时文件)
-      │
-      ├─build (开发，构建工具配置)
-      │  ├─bs (BrowserSync配置)
-      │  │
-      │  ├─fis (Fis3配置)
-      │  │
-      │  ├─gulp (Gulp配置)
-      │  │
-      │  └─webpack (Webpack配置)
-      │
-      ├─client (非业务相关资源)
-      │  │  index.html (layout文件)
-      │
-      ├─components
-      │  ├─boot (启动相关)
-      │  │  │  boot.js (启动文件，加载默认启动依赖)
-      │  │  │  restApi.js (接口)
-      │  │  │  routes.js (路由)
-      │  │  │  
-      │  │  ├─directives (指令)
-      │  │  │
-      │  │  ├─effects (特效)
-      │  │  │
-      │  │  └─filters (过滤器)
-      │  │
-      │  ├─c (组件)
-      │  │
-      │  ├─p (页面)
-      │  │
-      │  └─util (工具)
-      │
-      ├─config (项目配置)
-      │
-      ├─docs (文档)
-      │
-      └─server (Node服务相关)
-      │
-      └─fis-conf.js (fis3编译配置)
+------
+
+#### 目录结构
+
+![](http://i1.tietuku.com/c13327378bc09699.png)
 
 -----
 
