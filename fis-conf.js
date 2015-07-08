@@ -161,7 +161,7 @@ fis
 
 /**********************测试/生产环境下*****************/
 fis
-    .media('production')
+    .media('prod')
 
     .match(/\.nvmrc$/, {
         release : '.nvmrc'
