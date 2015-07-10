@@ -11,7 +11,7 @@ var plugins = {
 fis
     // 排除指定目录
     .set('project.files', ['**', '.**', '.**/**'])
-    .set('project.ignore', ['node_modules/**', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
+    .set('project.ignore', ['node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
     // 把scss映射为css
     .set('project.ext', {
         scss : 'css'
@@ -86,8 +86,8 @@ fis
     })
 
     .match(/^\/components\/(.*)$/i, {
-        url : '${urlPrefix}/c/${name}/${version}/$1',
-        release : '/public/c/${name}/${version}/$1'
+        url : '${urlPrefix}/c/${version}/$1',
+        release : '/public/c/${version}/$1'
     })
     // components相关
     .match(/^\/components\/(.*\.tpl)$/i, {
@@ -95,38 +95,38 @@ fis
         isViews: true,
     })
     .match(/^\/components\/(.*\.js)$/i, {
-        moduleId: '${name}/${version}/$1',
-        id : '${name}/${version}/$1',
+        moduleId: '${version}/$1',
+        id : '${version}/$1',
         isMod : true,
         isES6 : true,
         isComponent : true,
         useHash : false,
-        url : '${urlPrefix}/c/${name}/${version}/$1',
-        release : '/public/c/${name}/${version}/$1'
+        url : '${urlPrefix}/c/${version}/$1',
+        release : '/public/c/${version}/$1'
     })
     .match(/^\/components\/(.*)\.(scss|css)$/i, {
-        moduleId: '${name}/${version}/$1.css',
-        id : '${name}/${version}/$1.css',
+        moduleId: '${version}/$1.css',
+        id : '${version}/$1.css',
         isMod : true,
         useSprite : true,
         useHash : false,
-        url : '${urlPrefix}/c/${name}/${version}/$1.$2',
-        release : '/public/c/${name}/${version}/$1.$2'
+        url : '${urlPrefix}/c/${version}/$1.$2',
+        release : '/public/c/${version}/$1.$2'
     })
 
     // client文件夹相关
     .match(/^\/client\/(.*)$/, {
         useSprite : true,
         isViews : true,
-        url : '${urlPrefix}/${name}/${version}/$1',
-        release : '/public/${name}/${version}/$1'
+        url : '${urlPrefix}/${version}/$1',
+        release : '/public/${version}/$1'
     })
     .match(/^\/client\/(.*\.(?:html?|js))$/, {
         useCache: false,
         isViews: true,
         isES6: false,
-        url : '${urlPrefix}/${name}/${version}/$1',
-        release : '/public/${name}/${version}/$1'
+        url : '${urlPrefix}/${version}/$1',
+        release : '/public/${version}/$1'
     })
     .match(/^\/client\/static\/(.*)$/, {
         url : '/static/$1',
@@ -151,7 +151,7 @@ fis
 
     // release一下，不然在postpackager无法获取到数据
     .match('package.json', {
-        release : 'package.json'
+        release : '$0'
     })
 
     .match('map.json', {
@@ -161,10 +161,11 @@ fis
 
 /**********************测试/生产环境下*****************/
 fis
+    .media('test')
     .media('prod')
 
     .match(/\.nvmrc$/, {
-        release : '.nvmrc'
+        release : '$0'
     })
 
     .match(/^\/client\/(.*)$/, {

@@ -56,7 +56,7 @@ app.use(middleware.csrf({
 
 app.use(compress());
 app.use('/co', middleware.combo());
-app.use(middleware.router({index: path.resolve(config.dest, 'public/' + meta.name + '/' + meta.version + '/index.html')}));
+app.use(middleware.router({index: path.resolve(config.dest, 'public/' + meta.version + '/index.html')}));
 
 app.use('/api', middleware.proxy({target: config.api_target}));
 
