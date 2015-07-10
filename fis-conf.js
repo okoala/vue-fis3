@@ -44,7 +44,9 @@ fis
 
     .match(/\.js$/i, {
         // 设置js文件为babel解析，支持es6的写法。
-        parser: fis.plugin('babel2'),
+        parser: fis.plugin('babel2', {
+            // babel options
+        }),
 
         // 自己的define包装
         postprocessor: plugins.define
@@ -143,6 +145,7 @@ fis
         moduleId : '$1',
         id : '$1',
         isBaseMod: true,
+        isES6: false,
         isMod : true,
         useHash : false,
         url : '${urlPrefix}/c/$1',
