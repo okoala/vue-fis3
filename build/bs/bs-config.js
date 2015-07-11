@@ -50,7 +50,7 @@ module.exports = {
     "scrollThrottle": 0,
     "reloadDelay": 0,
     "reloadDebounce": 300,
-    "plugins": ["browser-sync-vue"],
+    // "plugins": ["browser-sync-vue"],
     "injectChanges": true,
     "startPath": null,
     "minify": true,
