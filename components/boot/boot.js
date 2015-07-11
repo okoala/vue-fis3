@@ -11,9 +11,6 @@ Vue.use(require('vue-resource'));
 // 使用vue view插件
 Vue.use(require('vue-view'));
 
-// 加载路由.
-Vue.use(require('./routes'));
-
 // 加载directive组件
 Vue.directive('lazyload', require('./directives/lazyload.js'));
 Vue.directive('minheight', require('./directives/minheight.js'));
@@ -44,4 +41,6 @@ export default function(options) {
     Vue.http.response.success['status'] = 1;
     // 设置post的为form形式。
     Vue.http.options.emulateJSON = true;
+    // 加载路由.
+    Vue.use(require('./routes'));
 }
