@@ -39,7 +39,8 @@ export default function(Vue) {
                 // 在路由进入前执行
                 // 可以用作获取用户信息，登陆/授权相关~~
                 beforeEnter: function(location, next, router) {
-                    //Vue.$root.isLogin = true;
+                    // 这里可以加载restApi
+                    // Vue.$root.isLogin = true;
                 }
             }
         },
