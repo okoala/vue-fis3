@@ -50,9 +50,7 @@ app.use(lusca({
     p3p: false,
     xssProtection: true
 }));
-app.use(middleware.csrf({
-    routes: ['/api']
-}));
+app.use(middleware.csrf());
 
 app.use(compress());
 app.use('/co', middleware.combo());

@@ -35,7 +35,7 @@ module.exports = function (options) {
     secret = options.secret || '_csrfSecret';
     routes = options.routes;
 
-    if (!Array.isArray(routes)) {
+    if (routes && !Array.isArray(routes)) {
         routes = [routes];
     }
 
@@ -51,7 +51,7 @@ module.exports = function (options) {
 
         // Move along for safe verbs
         method = req.method;
-        if ((method === 'GET' || method === 'HEAD' || method === 'OPTIONS') && !isMatchUrl(routes, req.url)) {
+        if ((method === 'GET' || method === 'HEAD' || method === 'OPTIONS') && (!routes || !isMatchUrl(routes, req.url))) {
             return next();
         }
 
