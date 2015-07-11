@@ -32,7 +32,7 @@
 #### 快速开始
 
     // 安装fis及相关插件
-    npm i -g fis3
+    npm i -g fis3 (需要3.0.7以上)
     npm i -g fis3-hook-module
     npm i -g fis-parser-sass3
     npm i -g fis-parser-babel2
@@ -46,6 +46,11 @@
     // node调试工具
     npm i -g node-dev
     npm i -g node-inspector
+
+    // 性能调优工具, 下载安装。
+    Mac: http://profiler.oss-cn-hangzhou.aliyuncs.com/node-profiler-v0.12.6.pkg
+    Win: http://profiler.oss-cn-hangzhou.aliyuncs.com/node-profiler-v0.12.6-x64.msi
+    npm run profiler
 
     // 类似livereload的工具
     npm i -g browser-sync
@@ -61,7 +66,8 @@
     cd fis3-vue
     npm install
     npm run dev
-
+    
+    // 需要预先配置好发布信息
     // 初始化服务器环境
     npm run setup
 
@@ -87,6 +93,8 @@
       说明指定vue,vue-resource,vue-view,这三个为前端库。
       使用的时候可以直接require('vue'),require('vue-resource')。
       当然你需要确认库是否已经在node_modules里了。
+
+    2. 通过配置config/config.json可以配置pm2相关设置，发布相关也在这个配置文件中.
 
 ------
 

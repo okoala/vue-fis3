@@ -1,0 +1,20 @@
+---
+- hosts: app
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: update repo
+      git: repo={{project_repo}} version=master dest={{project_root}}
+      sudo: yes
+      sudo_user: web
+      notify:
+        - reload {{project_name}}
+        - flush iptables
+
+  handlers:
+    - name: reload {{project_name}}
+      shell: pm2 startOrReload config/config.json
+
+    - name: flush iptables
+      shell: iptables -F
