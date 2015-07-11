@@ -33,6 +33,14 @@ export default function(Vue) {
                 hashbang: false,
                 // 设置页面间的转场效果
                 transition: true
+            },
+            // 全局中间件
+            middleware: {
+                // 在路由进入前执行
+                // 可以用作获取用户信息，登陆/授权相关~~
+                beforeEnter: function(location, next, router) {
+                    //Vue.$root.isLogin = true;
+                }
             }
         },
 
