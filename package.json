@@ -1,8 +1,20 @@
 {
   "name": "fis3-vue",
   "version": "0.0.1",
-  "private": true,
+  "author": "Koala Huang <dapixp@gmail.com>",
+  "license": "MIT",
+  "description": "Very Strong Node CMS",
+  "keywords": [
+    "mvvm",
+    "browser",
+    "cms"
+  ],
   "main": "server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okoala/fis3-vue.git"
+  },
+  "bugs": "https://github.com/okoala/fis3-vue/issues",
   "scripts": {
     "pre": "gulp --gulpfile build/gulp/tasks/preinstall.js preinstall",
 
@@ -46,8 +58,5 @@
     "vue",
     "vue-resource",
     "vue-view"
-  ],
-  "engines": {
-    "node": "~ 0.12.6"
-  }
+  ]
 }
