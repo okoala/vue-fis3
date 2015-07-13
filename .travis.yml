@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - "iojs"
+  - "0.12"
+
+before_script:
+  - npm run lint
+
+after_success:
+  - npm run coveralls
+
+notifications:
+  email:
+    - dapixp@gmail.com
+
+cache:
+  directories:
+    - node_modules
