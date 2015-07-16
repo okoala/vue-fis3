@@ -40,12 +40,15 @@
     npm i -g fis-optimizer-html-minifier
     npm i -g fis-optimizer-clean-css
 
+    // webp转换
+    npm i -g cwebp-bin
+
     // 打包npm前端库工具
     npm i -g webpack
 
     // node调试工具
     npm i -g node-dev
-    npm i -g node-inspector
+    npm i -g node-inspector (如果在iojs环境安装失败，可以安装版本@0.9.2)
 
     // 性能调优工具, 下载安装。
     Mac: http://profiler.oss-cn-hangzhou.aliyuncs.com/node-profiler-v0.12.6.pkg
@@ -66,7 +69,7 @@
     cd fis3-vue
     npm install
     npm run dev
-    
+
     // 需要预先配置好发布信息
     // 初始化服务器环境
     npm run setup
@@ -95,6 +98,7 @@
       当然你需要确认库是否已经在node_modules里了。
 
     2. 通过配置config/config.json可以配置pm2相关设置，发布相关也在这个配置文件中.
+    3. 可以把图片命名为xxx.webp.jpg或xxx.webp.png这样可以同时生成webp和(png, jpg)两个版本的图片, 然后通过filter webp进行自动切换
 
 ------
 

@@ -1,11 +1,27 @@
+'use strict';
+
+var path = require('path');
+
 var config = require('./config');
 // 利用package.json文件定义项目名和版本
 var meta = require('./package.json');
 
 var plugins = {
-    define : require('./build/fis/postprocessor/define.js'),
-    frameworkConf : require('./build/fis/postpackager/framework-conf.js')
+    webp: require('./build/fis/postprocessor/webp'),
+    define : require('./build/fis/postprocessor/define'),
+    frameworkConf : require('./build/fis/postpackager/framework-conf')
 };
+
+// 有限制使用本地自定义插件~~
+var plugin = function(name, options) {
+    var localPlugin = plugins[name];
+    if (typeof localPlugin === 'function') {
+        localPlugin.options = options;
+        return localPlugin;
+    } else {
+        return fis.plugin.apply(fis, arguments);
+    }
+}
 
 /****************环境变量*****************/
 fis
@@ -19,6 +35,7 @@ fis
     .set('name', meta.name)
     .set('version', meta.version)
     .set('urlPrefix', config.urlPrefix)
+    .set('dest', /^\./i.test(config.dest) ? path.resolve(__dirname, config.dest) : config.dest)
     .set('framework', {
         cache: config.LSCache, //开启localstorage缓存
         combo: config.combo, // 开启合并
@@ -44,33 +61,43 @@ fis
 
     .match(/\.js$/i, {
         // 设置js文件为babel解析，支持es6的写法。
-        parser: fis.plugin('babel2', {
+        parser: plugin('babel2', {
             // babel options
         }),
 
         // 自己的define包装
-        postprocessor: plugins.define
+        postprocessor: plugin('define')
     })
 
     .match(/\.scss$/i, {
         rExt: '.css', // from .scss to .css
-        parser: fis.plugin('sass3', {
+        parser: plugin('sass3', {
             //fis-parser-sass option
+        })
+    })
+
+    .match(/(\.webp)\.(png|jpg)$/i, {
+        postprocessor: plugin('webp', {
+            quality: 50
         })
     })
 
     .match('::package', {
         // npm install [-g] fis3-postpackager-loader
         // 分析 __RESOURCE_MAP__ 结构，来解决资源加载问题
-        spriter: fis.plugin('csssprites', {
+        spriter: plugin('csssprites', {
             htmlUseSprite: true,
             layout: 'matrix',
             margin: '15',
             styleReg: /(<style(?:(?=\s)[\s\S]*?["'\s\w\/\-]>|>))([\s\S]*?)(<\/style\s*>|$)/ig
         }),
 
+        // prepackager: plugin('webp', {
+        //     quality: 50
+        // }),
+
         // 主要框架的逻辑
-        postpackager: plugins.frameworkConf
+        postpackager: plugin('frameworkConf')
     });
 
 
@@ -115,22 +142,27 @@ fis
         url : '${urlPrefix}/c/${version}/$1.$2',
         release : '/public/c/${version}/$1.$2'
     })
+    .match(/^\/components\/(.*)(\.webp)\.(png|jpg)$/i, {
+        useWebP: true,
+        url: '${urlPrefix}/c/${version}/$1.$3',
+        release: '/public/c/${version}/$1.$3'
+    })
 
     // client文件夹相关
-    .match(/^\/client\/(.*)$/, {
+    .match(/^\/client\/(.*)$/i, {
         useSprite : true,
         isViews : true,
         url : '${urlPrefix}/${version}/$1',
         release : '/public/${version}/$1'
     })
-    .match(/^\/client\/(.*\.(?:html?|js))$/, {
+    .match(/^\/client\/(.*\.(?:html?|js))$/i, {
         useCache: false,
         isViews: true,
         isES6: false,
         url : '${urlPrefix}/${version}/$1',
         release : '/public/${version}/$1'
     })
-    .match(/^\/client\/static\/(.*)$/, {
+    .match(/^\/client\/static\/(.*)$/i, {
         url : '/static/$1',
         release : '/static/$1'
     })
@@ -164,22 +196,25 @@ fis
 
 /**********************测试/生产环境下*****************/
 fis
-    .media('test')
-    .media('prod')
+    .media('deploy')
 
-    .match(/\.nvmrc$/, {
+    .match(/\.nvmrc$/i, {
         release : '$0'
     })
 
-    .match(/^\/client\/(.*)$/, {
+    .match(/^\/client\/(.*)$/i, {
         useHash: true
     })
 
-    .match(/\.(html|tpl)$/, {
+    .match(/^\/client\/static\/(.*)$/i, {
+        useHash: false
+    })
+
+    .match(/\.(html|tpl)$/i, {
         useHash: false,
 
         // 指定压缩插件 fis-optimizer-html-minifier
-        optimizer: fis.plugin('html-minifier', {
+        optimizer: plugin('html-minifier', {
             // fis直接将此配置传递给html-minfier模块
             // 因此相关配置项请直接参阅html-minifier文档
             removeComments: true,
@@ -189,31 +224,31 @@ fis
         })
     })
 
-    .match(/\.js$/, {
+    .match(/\.js$/i, {
         // 指定压缩插件 fis-optimizer-uglify-js
-        optimizer: fis.plugin('uglify-js', {
+        optimizer: plugin('uglify-js', {
             // option of uglify-js
         }),
 
-        lint: fis.plugin('jshint')
+        lint: plugin('jshint')
     })
 
-    .match(/\.(css|scss)$/, {
-        optimizer: fis.plugin('clean-css')
+    .match(/\.(css|scss)$/i, {
+        optimizer: plugin('clean-css')
     })
 
-    .match(/\.png$/, {
-        optimizer: fis.plugin('png-compressor')
+    .match(/\.png$/i, {
+        optimizer: plugin('png-compressor')
     })
 
     // server文件不编译
-    .match(/^\/config\/(.*)$/, {
+    .match(/^\/config\/(.*)$/i, {
         useCompile: false,
         release : '/config/$1'
     })
 
     // server文件不编译
-    .match(/^\/server\/(.*)$/, {
+    .match(/^\/server\/(.*)$/i, {
         useCompile: false,
         release : '/server/$1'
     });

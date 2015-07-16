@@ -27,6 +27,7 @@ Vue.transition('childSlideIn', require('./effects/child-slide-in'));
 
 // 加载filter
 Vue.filter('dateFormat', require('./filters/dateFormat'));
+Vue.filter('webp', require('./filters/webp'));
 Vue.filter('encode', function(str) {
     return encodeURIComponent(str);
 });
