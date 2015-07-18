@@ -1,6 +1,7 @@
+.dist/*
+.tmp/*
+build/*
+clint/*
 docs/*
-admin/public/js/lib/*
-admin/public/js/packages.js
-test/*
 node_modules/*
-coverage/*
+test/*

@@ -23,6 +23,12 @@
 
 界面和样式是直接copy腾讯CDC的idesign.qq.com
 
+### 截图
+
+![](http://i1.tietuku.com/8f4dd53803c48148.png)
+
+![](http://i1.tietuku.com/50a4afbf50a549fc.png)
+
 ------
 
 [点击查看demo](http://idesign.kulife.net/)
@@ -40,10 +46,13 @@
     npm i -g fis-optimizer-html-minifier
     npm i -g fis-optimizer-clean-css
 
-    // webp转换
+    // 其他编译工具
     npm i -g cwebp-bin
+    npm i -g eslint
+    npm i -g babel-eslint
 
-    // 打包npm前端库工具
+    // 其他构建工具
+    npm i -g gulp
     npm i -g webpack
 
     // node调试工具
@@ -85,9 +94,15 @@
 
 ------
 
-#### 使用说明
+#### 目录结构
 
-    1. 通过package.json的components字段，可以添加指定的库。例如：
+![](http://i1.tietuku.com/c13327378bc09699.png)
+
+-----
+#### 项目说明
+    1. 无分号，2Tab缩进.
+
+    2. 通过package.json的components字段，可以添加指定的库。例如：
       "components": [
         "vue",
         "vue-resource",
@@ -97,19 +112,15 @@
       使用的时候可以直接require('vue'),require('vue-resource')。
       当然你需要确认库是否已经在node_modules里了。
 
-    2. 通过配置config/config.json可以配置pm2相关设置，发布相关也在这个配置文件中.
-    3. 可以把图片命名为xxx.webp.jpg或xxx.webp.png这样可以同时生成webp和(png, jpg)两个版本的图片, 然后通过filter webp进行自动切换
+    3. 通过配置config/config.json可以配置pm2相关设置，发布相关也在这个配置文件中.
+
+    4. 可以把图片命名为xxx.webp.jpg或xxx.webp.png
+      这样可以同时生成webp和(png, jpg)两个版本的图片, 然后通过filter webp进行自动切换.
+
+    5. 新手可以使用我的编辑器配置:
+      Sublime Text 3: https://github.com/okoala/sublime-bak.git
+      Atom: https://github.com/okoala/atom-bak.git
+      已经集成目前比较流行的插件~~项目解压覆盖到对应的文件, 然后重启编辑器即可.
+
 
 ------
-
-#### 目录结构
-
-![](http://i1.tietuku.com/c13327378bc09699.png)
-
------
-
-### 截图
-
-![](http://i1.tietuku.com/8f4dd53803c48148.png)
-
-![](http://i1.tietuku.com/50a4afbf50a549fc.png)
