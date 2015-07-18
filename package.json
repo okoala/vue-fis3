@@ -17,14 +17,11 @@
   "bugs": "https://github.com/okoala/fis3-vue/issues",
   "scripts": {
     "pre": "gulp --gulpfile build/gulp/tasks/preinstall.js preinstall",
-
     "dev": "gulp --gulpfile build/gulp/tasks/dev.js dev",
-
     "debug": "gulp --gulpfile build/gulp/tasks/dev.js debug",
     "webpack": "gulp --gulpfile build/gulp/tasks/dev.js webpack",
     "fis3-debug": "gulp --gulpfile build/gulp/tasks/dev.js fis3-debug",
     "profiler": "gulp --gulpfile build/gulp/tasks/profiler.js server-profiler",
-
     "start": "npm install && pm2 startOrReload ./config/config.json --env production",
     "setup": "pm2 deploy ./config/config.json production setup",
     "deploy": "pm2 deploy ./config/config.json production update",

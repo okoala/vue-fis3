@@ -47,7 +47,8 @@ Vue.component('p-index', {
 
     let setData = function (data) {
       this.currentRss = this.rss.filter(item => {
-        return item.id === rssId
+        /* eslint eqeqeq:0 */
+        return item.id == rssId
       })
 
       if (this.currentRss) {
