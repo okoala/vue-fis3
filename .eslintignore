@@ -1,7 +1,7 @@
 .dist/*
 .tmp/*
 build/*
-clint/*
+client/*
 docs/*
 node_modules/*
 test/*
