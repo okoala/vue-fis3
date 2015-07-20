@@ -37,7 +37,6 @@
     "http-proxy": "^1.11.1",
     "lodash": "^3.9.3",
     "lusca": "^1.1.1",
-    "snabbt.js": "^0.5.4",
     "swig": "^1.4.2",
     "vue": "^0.12.7",
     "vue-resource": "git://github.com/okoala/vue-resource.git",

@@ -1,29 +1,9 @@
 @charset 'UTF-8';
 
-// 参考 https://github.com/fayching/ionic/blob/master/scss/ionic.scss
+// Variables and mixins
+@import "variables";
+@import "mixins";
 
-@import
-
-    //Variables
-    'base/mixin',
-    'base/variable',
-
-    //基础样式
-    'base/reset',
-    'base/basic',
-
-    'base/animate',
-
-    // 辅助类
-    'util/border',
-    'util/arrowlink',
-    'util/nowrap',
-    'util/grid',
-    'util/layout',
-
-    // UI 组件
-    'component/btn',
-    'component/feed',
-    'component/modal',
-    'component/nav',
-    'component/pagination';
+// Resets and dependencies
+@import "resets/resets";
+@import "typography/typography";

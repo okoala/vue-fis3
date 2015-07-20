@@ -1,4 +1,0 @@
-[submodule "client/material-design"]
-	path = client/material-design
-	url = https://github.com/google/material-design-lite.git
-	ignore = untracked
