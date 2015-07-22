@@ -1,35 +1,36 @@
 {
-    "apps": [{
-        "name": "fis3-vue",
-        "script": "./server/index.js",
-        "log_date_format": "YYYY-MM-DD",
-        "error_file": "./logs/pm2/product-err.log",
-        "out_file": "./logs/pm2/product-out.log",
-        "pid_file": "./logs/pm2/product-pid.log",
-        "exec_mode": "cluster_mode",
-        "merge_logs" : true,
-        "max_memory_restart" : "1024M",
-        "env": {
-            "COMMON_ENV_VAR": "true",
-            "COMMON_VARIABLE": "true"
-        },
-        "env_production": {
-            "NODE_ENV": "production"
-        }
-    }],
-    "deploy": {
-        "production": {
-            "user": "root",
-            "host": "23.88.3.62",
-            "port": "10837",
-            "ref" : "origin/master",
-            "repo": "https://github.com/okoala/fis3-vue.git",
-            "path": "/root",
-            "post-deploy": "source ~/.nvm/nvm.sh && npm install --verbose && export NODE_ENV=production && gulp --gulpfile build/gulp/tasks/deploy.js deploy"
-        }
+  "apps": [{
+    "name": "fis3-vue",
+    "script": "./server/index.js",
+    "log_date_format": "YYYY-MM-DD",
+    "error_file": "./logs/pm2/product-err.log",
+    "out_file": "./logs/pm2/product-out.log",
+    "pid_file": "./logs/pm2/product-pid.log",
+    "exec_mode": "cluster_mode",
+    "merge_logs" : true,
+    "max_memory_restart" : "1024M",
+    "env": {
+        "COMMON_ENV_VAR": "true",
+        "COMMON_VARIABLE": "true"
     },
+    "env_production": {
+        "NODE_ENV": "production"
+    }
+  }],
 
-    "comboPattern": "/co??%s",
-    "urlPattern": "/public/c/%s",
-    "urlPrefix": "/public"
+  "deploy": {
+    "production": {
+      "user": "root",
+      "host": "23.88.3.62",
+      "port": "10837",
+      "ref" : "origin/master",
+      "repo": "https://github.com/okoala/fis3-vue.git",
+      "path": "/root",
+      "post-deploy": "source ~/.nvm/nvm.sh && npm install --verbose && export NODE_ENV=production && gulp --gulpfile build/gulp/tasks/deploy.js deploy"
+    }
+  },
+
+  "comboPattern": "/co??%s",
+  "urlPattern": "/public/c/%s",
+  "urlPrefix": "/public"
 }

@@ -1,19 +1,18 @@
-'use strict';
+'use strict'
 
-
-var token = require('lusca/lib/token');
+var token = require('lusca/lib/token')
 
 var isMatchUrl = function(routes, url) {
-    var hasMatch = false;
+  var hasMatch = false
 
-    routes.forEach(function(route, index) {
-        route = route.replace('http://', '').replace('https://', '');
-        if (url.indexOf(route) === 0) {
-            hasMatch = true;
-        }
-    });
+  routes.forEach(function(route, index) {
+    route = route.replace('http://', '').replace('https://', '')
+    if (url.indexOf(route) === 0) {
+      hasMatch = true
+    }
+  });
 
-    return hasMatch;
+  return hasMatch
 }
 
 /**
@@ -25,49 +24,49 @@ var isMatchUrl = function(routes, url) {
  *    header {String} The name of the response header containing the CSRF token. Default "x-csrf-token".
  */
 module.exports = function (options) {
-    var impl, key, header, secret, routes;
+  var impl, key, header, secret, routes
 
-    options = options || {};
+  options = options || {}
 
-    key = options.key || '_csrf';
-    impl = options.impl || token;
-    header = options.header || 'x-csrf-token';
-    secret = options.secret || '_csrfSecret';
-    routes = options.routes;
+  key = options.key || '_csrf'
+  impl = options.impl || token
+  header = options.header || 'x-csrf-token'
+  secret = options.secret || '_csrfSecret'
+  routes = options.routes
 
-    if (routes && !Array.isArray(routes)) {
-        routes = [routes];
+  if (routes && !Array.isArray(routes)) {
+    routes = [routes]
+  }
+
+  return function csrf (req, res, next) {
+    var method, validate, _impl, _token, errmsg
+
+    // call impl
+    _impl = impl.create(req, secret)
+    validate = impl.validate || _impl.validate
+    _token = _impl.token || _impl
+    // Set the token
+    res.locals[key] = _token
+
+    // Move along for safe verbs
+    method = req.method
+    if ((method === 'GET' || method === 'HEAD' || method === 'OPTIONS') && (!routes || !isMatchUrl(routes, req.url))) {
+      return next()
     }
 
-    return function csrf(req, res, next) {
-        var method, validate, _impl, _token, errmsg;
+    // Validate token
+    _token = (req.body && req.body[key]) || req.headers[header.toLowerCase()]
 
-        //call impl
-        _impl = impl.create(req, secret);
-        validate = impl.validate || _impl.validate;
-        _token = _impl.token || _impl;
-        // Set the token
-        res.locals[key] = _token;
-
-        // Move along for safe verbs
-        method = req.method;
-        if ((method === 'GET' || method === 'HEAD' || method === 'OPTIONS') && (!routes || !isMatchUrl(routes, req.url))) {
-            return next();
-        }
-
-        // Validate token
-        _token = (req.body && req.body[key]) || req.headers[header.toLowerCase()];
-
-        if (validate(req, _token)) {
-            next();
-        } else {
-            res.statusCode = 403;
-            if (!_token) {
-                errmsg = 'CSRF token missing';
-            } else {
-                errmsg = 'CSRF token mismatch';
-            }
-            next(new Error(errmsg));
-        }
-    };
-};
+    if (validate(req, _token)) {
+      next()
+    } else {
+      res.statusCode = 403
+      if (!_token) {
+        errmsg = 'CSRF token missing'
+      } else {
+        errmsg = 'CSRF token mismatch'
+      }
+      next(new Error(errmsg))
+    }
+  }
+}
