@@ -1,66 +1,95 @@
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+@import "../mixins/index";
+$tooltipPrefixClass: ~"${css-prefix}tooltip";
 
-@import "../variables";
+//
+// Tooltips
+// --------------------------------------------------
 
-.mdl-tooltip {
-  transform: scale(0);
-  transform-origin: top center;
-  will-change: transform;
-  z-index: 999;
-  background: $tooltip-background-color;
-  border-radius: 2px;
-  color: $tooltip-text-color;
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 14px;
-  max-width: 170px;
-  position: fixed;
-  top: -500px;
-  left: -500px;
-  padding: 8px;
-  text-align: center;
-}
-.mdl-tooltip.is-active {
-  animation: pulse 200ms $animation-curve-linear-out-slow-in forwards;
-}
+//** Tooltip max width
+$tooltip-max-width:           250px;
+//** Tooltip text color
+$tooltip-color:               #fff;
+//** Tooltip background color
+$tooltip-bg:                  #373737;
+$tooltip-opacity:             0.9;
 
-.mdl-tooltip--large {
-  line-height: 14px;
-  font-size: 14px;
-  padding: 16px;
-}
+//** Tooltip arrow width
+$tooltip-arrow-width:         5px;
+//** Tooltip distance with trigger
+$tooltip-distance:            $tooltip-arrow-width+4;
+//** Tooltip arrow color
+$tooltip-arrow-color:         $tooltip-bg;
 
-@keyframes pulse {
-  0% {
-    transform: scale(0);
-    opacity: 0;
+// Base class
+.${tooltipPrefixClass} {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  visibility: visible;
+  left: -9999px;
+  top: -9999px;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  opacity: $tooltip-opacity;
+
+  &-hidden {
+    display: none;
   }
-  50% {
-    // Fixes a weird bug with the interaction between Safari and the result of
-    // the SASS compilation for the animation.
-    // Essentially, we need to make sure that "50%" and "100%" don't get merged
-    // into a single "50%, 100%" entry, so we need to avoid them having any
-    // matching properties.
-    transform: scale(0.99);
+
+  &-placement-top    { padding: $tooltip-arrow-width 0 $tooltip-distance 0; }
+  &-placement-right  { padding: 0 $tooltip-arrow-width 0 $tooltip-distance; }
+  &-placement-bottom { padding: $tooltip-distance 0 $tooltip-arrow-width 0; }
+  &-placement-left   { padding: 0 $tooltip-distance 0 $tooltip-arrow-width; }
+}
+
+// Wrapper for the tooltip content
+.${tooltipPrefixClass}-inner {
+  max-width: $tooltip-max-width;
+  padding: 8px 10px;
+  color: $tooltip-color;
+  text-align: left;
+  text-decoration: none;
+  background-color: $tooltip-bg;
+  border-radius: $border-radius-base;
+  box-shadow: $overlay-shadow;
+}
+
+// Arrows
+.${tooltipPrefixClass}-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.${tooltipPrefixClass} {
+  &-placement-top &-arrow {
+    bottom: $tooltip-distance - $tooltip-arrow-width;
+    left: 50%;
+    margin-left: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-arrow-color;
   }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-    visibility: visible;
+  &-placement-right &-arrow {
+    top: 50%;
+    left:  $tooltip-distance - $tooltip-arrow-width;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-right-color: $tooltip-arrow-color;
+  }
+  &-placement-left &-arrow {
+    top: 50%;
+    right: $tooltip-distance - $tooltip-arrow-width;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-left-color: $tooltip-arrow-color;
+  }
+  &-placement-bottom &-arrow {
+    top: $tooltip-distance - $tooltip-arrow-width;
+    left: 50%;
+    margin-left: -$tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-arrow-color;
   }
 }

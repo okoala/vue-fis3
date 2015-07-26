@@ -1,0 +1,136 @@
+@mixin zoom-motion($className, $keyframeName) {
+  @include make-motion($className, $keyframeName);
+  .${className}-enter {
+    transform: scale(0, 0); // need this by yiminghe
+    animation-timing-function: $ease-out-circ;
+  }
+  .${className}-leave {
+    animation-timing-function: $ease-in-circ;
+  }
+}
+
+@include zoom-motion(zoom, zoom);
+@include zoom-motion(zoom-up, zoomUp);
+@include zoom-motion(zoom-down, zoomDown);
+@include zoom-motion(zoom-left, zoomLeft);
+@include zoom-motion(zoom-right, zoomRight);
+
+$keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(0, 0);
+  }
+  100% {
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+  }
+}
+
+$keyframes zoomOut {
+  0% {
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(0, 0);
+  }
+}
+
+$keyframes zoomUpIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: scale(0, 0);
+  }
+  100% {
+    transform-origin: 50% 0%;
+    transform: scale(1, 1);
+  }
+}
+
+$keyframes zoomUpOut {
+  0% {
+    transform-origin: 50% 0%;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: scale(0, 0);
+  }
+}
+
+$keyframes zoomLeftIn {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 50%;
+    transform: scale(0, 0);
+  }
+  100% {
+    transform-origin: 0% 50%;
+    transform: scale(1, 1);
+  }
+}
+
+$keyframes zoomLeftOut {
+  0% {
+    transform-origin: 0% 50%;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 0% 50%;
+    transform: scale(0, 0);
+  }
+}
+
+$keyframes zoomRightIn {
+  0% {
+    opacity: 0;
+    transform-origin: 100% 50%;
+    transform: scale(0, 0);
+  }
+  100% {
+    transform-origin: 100% 50%;
+    transform: scale(1, 1);
+  }
+}
+
+$keyframes zoomRightOut {
+  0% {
+    transform-origin: 100% 50%;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 100% 50%;
+    transform: scale(0, 0);
+  }
+}
+
+$keyframes zoomDownIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(0, 0);
+  }
+  100% {
+    transform-origin: 50% 100%;
+    transform: scale(1, 1);
+  }
+}
+
+$keyframes zoomDownOut {
+  0% {
+    transform-origin: 50% 100%;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(0, 0);
+  }
+}

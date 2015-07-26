@@ -1,9 +1,3 @@
-@charset 'UTF-8';
-
-// Variables and mixins
-@import "variables";
-@import "mixins";
-
-// Resets and dependencies
-@import "resets/resets";
-@import "typography/typography";
+@import "./themes/default/index";
+@import "./core/index";
+@import "./components/index";

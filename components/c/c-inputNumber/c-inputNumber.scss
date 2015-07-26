@@ -1,0 +1,137 @@
+$inputNumberPrefixCls: ant-input-number;
+
+@import "../mixins/iconfont";
+@import "../mixins/input";
+
+.${inputNumberPrefixCls} {
+  @include input();
+  margin: 0;
+  padding: 0;
+  line-height: 28px;
+  font-size: 12px;
+  height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #D9D9D9;
+  border-radius: $border-radius-base;
+  overflow: hidden;
+
+  &-handler {
+    text-align: center;
+    line-height: 0;
+    height: 14px;
+    overflow: hidden;
+    color: #999;
+    &:hover &-up-inner,
+    &:hover &-down-inner {
+      color: tint($primary-color, 20%);
+    }
+  }
+
+  &-handler-up-inner, &-handler-down-inner {
+    @include iconfont-mixin();
+    line-height: 12px;
+    user-select: none;
+    -webkit-user-select: none;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    @include iconfont-size-under-12px(8px);
+    right: 4px;
+    color: #999;
+  }
+
+  &:hover {
+    @include hover();
+  }
+
+  &-focused {
+    @include active();
+  }
+
+  &-disabled {
+    @include disabled();
+  }
+
+  &-input-wrap {
+    overflow: hidden;
+    height: 28px;
+  }
+
+  &-input {
+    width: 100%;
+    text-align: left;
+    outline: 0;
+    -moz-appearance: textfield;
+    line-height: 28px;
+    height: 28px;
+    transition: all 0.3s ease;
+    color: #666666;
+    border: 0;
+    border-radius: $border-radius-base;
+    padding: 0 7px;
+
+    &[disabled] {
+      @include disabled();
+    }
+  }
+
+  &-handler-wrap {
+    float: right;
+    border-left: 1px solid #D9D9D9;
+    width: 22px;
+    height: 28px;
+    position: relative;
+  }
+
+  &-handler-up {
+    border-bottom: 1px solid #D9D9D9;
+    cursor: pointer;
+    &-inner {
+      top: 1px;
+      &:before {
+        content: "\e600";
+        @include ie-rotate(2);
+        transform: rotate(180deg);
+        -webkit-transform-origin: 47.5% 51%; /* fix chrome position */
+      }
+    }
+  }
+
+  &-handler-down {
+    cursor: pointer;
+    &-inner {
+      &:before {
+        content: "\e600";
+      }
+    }
+  }
+
+  @mixin handler-disabled() {
+    opacity: 0.72;
+    color: #ccc!important;
+    cursor: default;
+    &:hover {
+      color: #ccc;
+      cursor: default;
+    }
+  }
+
+  &-handler-down-disabled, &-handler-up-disabled, &-disabled {
+    .${inputNumberPrefixCls}-handler-down-inner,
+    .${inputNumberPrefixCls}-handler-up-inner {
+      @include handler-disabled();
+    }
+  }
+
+  &-disabled {
+    .${inputNumberPrefixCls}-input {
+      opacity: 0.72;
+      cursor: not-allowed;
+      background-color: #f3f3f3;
+    }
+    .${inputNumberPrefixCls}-handler {
+      @include handler-disabled();
+    }
+  }
+}

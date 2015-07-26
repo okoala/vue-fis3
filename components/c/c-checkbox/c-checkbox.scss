@@ -1,175 +1,135 @@
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+$checkboxWrapPrefixCls: ant-checkbox;
+$checkboxInnerPrefixCls: ~"${checkboxWrapPrefixCls}-inner";
 
-@import "../variables";
-@import "../mixins";
-
-.mdl-checkbox {
+/* 一般状态 */
+.${checkboxWrapPrefixCls} {
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  line-height: 1;
   position: relative;
-
-  z-index: 1;
-
   vertical-align: middle;
 
-  display: inline-block;
-
-  box-sizing: border-box;
-  width: 100%;
-  height: $checkbox-label-height;
-  margin: 0;
-  padding: 0;
-
-  &.is-upgraded {
-    padding-left: $checkbox-button-size + $checkbox-padding;
+  &:hover {
+    .${checkboxInnerPrefixCls} {
+      border-color: #bcbcbc;
+    }
   }
-}
 
-.mdl-checkbox__input {
-  line-height: $checkbox-label-height;
+  &-inner {
+    &:after {
+      transform: rotate(45deg) scale(0);
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      display: table;
+      width: 5px;
+      height: 8px;
+      border: 2px solid #ffffff;
+      border-top: 0;
+      border-left: 0;
+      content: ' ';
+      transition: all @include 1s $ease-in-back;
+    }
 
-  .mdl-checkbox.is-upgraded & {
-    // Hide input element, while still making it respond to focus.
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: #d9d9d9;
+    background-color: #ffffff;
+    transition: border-color 0.1s $ease-in-out-back, background-color 0.1s $ease-in-out-back;
+  }
+
+  &-input {
     position: absolute;
-    width: 0;
-    height: 0;
-    margin: 0;
-    padding: 0;
+    left: 0;
+    z-index: 9999;
+    cursor: pointer;
     opacity: 0;
-    -ms-appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    border: none;
+    top: 0;
+    bottom: 0;
+    right: 0;
   }
 }
 
-.mdl-checkbox__box-outline {
-  position: absolute;
-  top: $checkbox-top-offset;
-  left: 0;
+/* 选中状态 */
+.${checkboxWrapPrefixCls}-checked {
 
-  display: inline-block;
-
-  box-sizing: border-box;
-  width: $checkbox-button-size;
-  height: $checkbox-button-size;
-  margin: 0;
-
-  cursor: pointer;
-  overflow: hidden;
-
-  border: 2px solid $checkbox-off-color;
-  border-radius: 2px;
-
-  z-index: 2;
-
-  .mdl-checkbox.is-checked & {
-    border: 2px solid $checkbox-color;
+  &:hover {
+    .${checkboxInnerPrefixCls} {
+      border-color: $primary-color;
+    }
   }
 
-  .mdl-checkbox.is-disabled & {
-    border: 2px solid $checkbox-disabled-color;
-    cursor: auto;
-  }
-}
+  .${checkboxInnerPrefixCls} {
+    border-color: $primary-color;
+    background-color: $primary-color;
 
-.mdl-checkbox__focus-helper {
-  position: absolute;
-  top: $checkbox-top-offset;
-  left: 0;
-
-  display: inline-block;
-
-  box-sizing: border-box;
-  width: $checkbox-button-size;
-  height: $checkbox-button-size;
-  border-radius: 50%;
-
-  background-color: transparent;
-
-  .mdl-checkbox.is-focused & {
-    box-shadow: 0 0 0px ($checkbox-button-size / 2) rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-
-  .mdl-checkbox.is-focused.is-checked & {
-    box-shadow: 0 0 0px ($checkbox-button-size / 2) $checkbox-focus-color;
-    background-color: $checkbox-focus-color;
+    &:after {
+      transform: rotate(45deg) scale(1);
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      display: table;
+      width: 5px;
+      height: 8px;
+      border: 2px solid #ffffff;
+      border-top: 0;
+      border-left: 0;
+      content: ' ';
+      transition: all @include 2s $ease-out-back .1s;
+    }
   }
 }
 
-.mdl-checkbox__tick-outline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  mask: url("/images/tick-mask.svg?embed");
+.${checkboxWrapPrefixCls}-disabled {
 
-  background: transparent;
-  @include material-animation-default(0.28s);
-  transition-property: background;
+  &.${checkboxWrapPrefixCls}-checked {
 
-  .mdl-checkbox.is-checked & {
-    background: $checkbox-color url("/images/tick.svg?embed");
+    &:hover {
+      .${checkboxInnerPrefixCls} {
+        border-color: #d9d9d9;
+      }
+    }
+
+    .${checkboxInnerPrefixCls} {
+      background-color: #f3f3f3;
+      border-color: #d9d9d9;
+
+      &:after {
+        animation-name: none;
+        border-color: #cccccc;
+      }
+    }
   }
 
-  .mdl-checkbox.is-checked.is-disabled & {
-    background: $checkbox-disabled-color url("/images/tick.svg?embed");
+  &:hover {
+    .${checkboxInnerPrefixCls} {
+      border-color: #d9d9d9;
+    }
+  }
+
+  .${checkboxInnerPrefixCls} {
+    border-color: #d9d9d9;
+    background-color: #f3f3f3;
+    &:after {
+      animation-name: none;
+      border-color: #f3f3f3;
+    }
+  }
+
+  .${checkboxInnerPrefixCls}-input {
+    cursor: default;
   }
 }
 
-.mdl-checkbox__label {
-  position: relative;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: $checkbox-label-height;
-  margin: 0;
-
-  .mdl-checkbox.is-disabled & {
-    color: $checkbox-disabled-color;
-    cursor: auto;
-  }
-}
-
-.mdl-checkbox__ripple-container {
-  position: absolute;
-  z-index: 2;
-  top: -(($checkbox-ripple-size - $checkbox-label-height) / 2);
-  left: -(($checkbox-ripple-size - $checkbox-button-size) / 2);
-
-  box-sizing: border-box;
-  width: $checkbox-ripple-size;
-  height: $checkbox-ripple-size;
-  border-radius: 50%;
-
-  cursor: pointer;
-
-  overflow: hidden;
-  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
-
-  & .mdl-ripple {
-    background: $checkbox-color;
-  }
-
-  .mdl-checkbox.is-disabled & {
-    cursor: auto;
-  }
-
-  .mdl-checkbox.is-disabled & .mdl-ripple {
-    background: transparent;
-  }
+.${checkboxWrapPrefixCls} + span {
+  margin-left: 8px;
 }

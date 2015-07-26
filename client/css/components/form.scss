@@ -1,0 +1,274 @@
+@import "../mixins/index";
+$btnClass: ~"${css-prefix}btn";
+
+@include reset-form();
+
+label {
+  position: relative;
+  &[required]:before {
+    position: absolute;
+    display: inline-block;
+    left: ~"-5px \9"; // ie8-9
+    content: "*";
+    color: $label-required-color;
+    font-family: SimSun;
+    font-size: $font-size-base;
+    @include translate3d(-10px; 0; 0);
+  }
+
+  > .${iconfont-css-prefix} {
+    vertical-align: top;
+    font-size: $font-size-base;
+  }
+}
+
+// Input styles
+.${css-prefix}input {
+  @include input;
+}
+
+//== Input type: with extra icon
+.has-feedback {
+  @include input-with-icon();
+}
+
+//== Style for input-group: input with label, with button or dropdown...
+.${css-prefix}input-group {
+  @include input-group(~"${css-prefix}input");
+}
+
+// Radio && Checkbox
+input[type="radio"],
+input[type="checkbox"] {
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+  }
+}
+// These classes are used directly on <label>s
+.${css-prefix}radio-inline,
+.${css-prefix}radio-vertical,
+.${css-prefix}checkbox-inline,
+.${css-prefix}checkbox-vertical {
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+  }
+}
+// These classes are used on elements with <label> descendants
+.${css-prefix}radio,
+.${css-prefix}checkbox {
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: $cursor-disabled;
+    }
+  }
+}
+
+// Form items
+// You should wrap labels and controls in .${css-prefix}form-item for optimum spacing
+.${css-prefix}form-item {
+  margin-bottom: $form-item-margin-bottom;
+  color: #666;
+
+  > label {
+    color: $label-color;
+    text-align: right;
+    vertical-align: middle;
+
+    &:lang(en) {
+      padding-right: 8px;
+    }
+  }
+
+  .${css-prefix}switch {
+    margin: 4px 0;
+  }
+}
+
+.${css-prefix}form-text, .${css-prefix}form-split {
+  margin: 0!important;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.${css-prefix}form-text {
+  display: inline-block;
+  padding-right: 8px;
+}
+
+.${css-prefix}form-split {
+  display: block;
+  text-align: center;
+}
+
+.${css-prefix}form-explain {
+  position: absolute;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  bottom: - $line-height-computed;
+}
+
+
+// 表单下的输入框尺寸唯一: 大尺寸
+form {
+  * {
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+  .has-feedback {
+    .${iconfont-css-prefix} {
+      @include square($input-height-lg);
+      line-height: $input-height-lg;
+    }
+  }
+  .${css-prefix}input,
+  .${css-prefix}input-group .${css-prefix}input,
+  .${css-prefix}input-group .${css-prefix}input-group-addon {
+    height: $input-height-lg;
+    font-size: $font-size-base;
+    padding: 6px 7px;
+  }
+
+  // Input combined with select
+  .${css-prefix}input-group {
+    .${selectPrefixCls}-selection {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      &:hover {
+        border-color: #d9d9d9;
+      }
+    }
+
+    .${selectPrefixCls}-selection--single {
+      margin-left: -1px;
+      height: $input-height-lg;
+      background-color: #eee;
+      .${selectPrefixCls}-selection__rendered {
+        padding-left: 8px;
+        padding-right: 25px;
+        line-height: 30px;
+      }
+    }
+
+    .${selectPrefixCls}-open .${selectPrefixCls}-selection {
+      border-color: #d9d9d9;
+      box-shadow: none;
+    }
+  }
+
+  // input[type=file]
+  .${css-prefix}upload {
+    background: transparent;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+  }
+
+  // Radios and checkboxes on same line
+  .${css-prefix}radio-inline,
+  .${css-prefix}checkbox-inline {
+    display: inline-block;
+    margin-right: 16px;
+    vertical-align: middle;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  .${css-prefix}checkbox-vertical,
+  .${css-prefix}radio-vertical {
+    display: block;
+    margin-top: 16px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .${inputNumberPrefixCls} {
+    margin-top: -1px;
+    margin-right: 8px;
+  }
+
+  .${prefixCalendarClass}-picker {
+    width: 100%;
+  }
+}
+
+// Form layout
+//== Horizontal Form
+.${css-prefix}form-horizontal {
+  .${css-prefix}form-item {
+    @include make-row;
+  }
+
+  .${css-prefix}form-item-compact {
+    label,
+    .${css-prefix}form-text,
+    .${css-prefix}form-split {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .${css-prefix}radio-inline,
+  .${css-prefix}checkbox-inline {
+    vertical-align: top;
+  }
+}
+
+//== Inline Form
+// Attention: Inline form does only apply to within viewports that are at least 768px wide
+// TODO: 优化
+.${css-prefix}form-inline {
+  @media (min-width: $screen-sm-min) {
+    .${css-prefix}form-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .${css-prefix}input {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .${css-prefix}form-text {
+      display: inline-block;
+    }
+
+    .has-feedback {
+      display: inline-block;
+    }
+  }
+}
+
+.${css-prefix}form-horizontal, .${css-prefix}form-inline {
+  label {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    > input[type="radio"],
+    > input[type="checkbox"] {
+      margin-right: 5px;
+    }
+  }
+}
+
+// Validation state
+.has-success {
+  @include form-control-validation($success-color; $input-hover-border-color;);
+  .${css-prefix}input {
+    border-color: $input-border-color;
+  }
+}
+.has-warning {
+  @include form-control-validation($warning-color; $warning-color;);
+}
+.has-error {
+  @include form-control-validation($error-color; $error-color;);
+}

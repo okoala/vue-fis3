@@ -1,0 +1,31 @@
+// Compatibility for browsers.
+
+// rotate for ie8 and blow
+@mixin ie-rotate($rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$rotation);
+}
+
+// support rotate for all browsers
+@mixin cross-rotate($degrees) {
+  @include rotate($degrees);
+  /* IE6-IE8 */
+  $radians: ~`parseInt("${degrees}") * Math.PI * 2 / 360`;
+  $costheta: ~`Math.cos("${radians}")`;
+  $sintheta: ~`Math.sin("${radians}")`;
+  $negsintheta: ~`"${sintheta}" * -1`;
+  filter: ~"progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=${costheta}, M12=${negsintheta}, M21=${sintheta}, M22=${costheta})";
+  zoom: 1;
+}
+
+// for iconfont font size
+// fix chrome 12px bug, support ie
+@mixin iconfont-size-under-12px($iconfontSize) {
+  display: inline-block;
+  $font-scale: unit($iconfontSize/$font-size-base);
+  font-size: $font-scale;
+  font-size: ~"${iconfontSize} \9"; // ie8-9
+  @include scale($font-scale);
+  :root & {
+    font-size: $font-size-base; // reset ie9 and above
+  }
+}

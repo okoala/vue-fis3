@@ -1,0 +1,327 @@
+$selectPrefixCls: ant-select;
+
+@import "../mixins/iconfont";
+//mixin
+@mixin selection__clear() {
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+}
+@mixin selected_icon() {
+  position: relative;
+  &:after {
+    @include iconfont-size-under-12px(9px);
+    display: inline-block;
+    content: '\e613';
+    font-family: 'anticon';
+    font-weight: bold;
+    position: absolute;
+    top: 6px;
+    right: 0;
+    //background: tint($primary-color, 90%);
+    padding-right: 16px;
+    color: $primary-color;
+  }
+}
+
+.${selectPrefixCls} {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
+  color: #666;
+  font-size: $font-size-base;
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  > ul > li > a {
+    padding: 0;
+    background-color: #fff;
+  }
+
+  // arrow
+  &-arrow {
+    @include iconfont-mixin();
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    line-height: 1;
+    margin-top: -5px;
+    @include iconfont-size-under-12px(8px);
+
+    * {
+      display: none;
+    }
+
+    &:before {
+      content: '\e611';
+      @include ie-rotate(1);
+      @include rotate(90deg);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &-selection {
+    outline: none;
+    user-select: none;
+    -webkit-user-select: none;
+
+    box-sizing: border-box;
+    display: block;
+
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #d9d9d9;
+    @include transition(all .3s $ease-in-out);
+
+    &:hover {
+      @include hover;
+    }
+    &:active {
+      @include active;
+    }
+  }
+
+  &-disabled {
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &-disabled &-selection {
+    &:hover, &:active {
+      border-color: #d9d9d9;
+    }
+  }
+
+  &-selection--single {
+    height: 28px;
+    cursor: pointer;
+
+    .${selectPrefixCls}-selection__rendered {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 10px;
+      padding-right: 20px;
+      line-height: 26px;
+    }
+
+    .${selectPrefixCls}-selection__clear {
+      @include selection__clear();
+    }
+  }
+
+  &-disabled &-selection__choice__remove {
+    color: #ccc;
+    cursor: default;
+    &:hover {
+      color: #ccc;
+    }
+  }
+
+  &-search--inline {
+    float: left;
+
+    .${selectPrefixCls}-search__field {
+      border: none;
+      font-size: 100%;
+      //margin-top: 5px;
+      background: transparent;
+      outline: 0;
+    }
+    > i {
+      float: right;
+    }
+  }
+
+  &-selection--multiple {
+    min-height: 28px;
+    cursor: text;
+
+    .${selectPrefixCls}-search--inline {
+      width: auto;
+      .${selectPrefixCls}-search__field {
+        width: 0.75em;
+      }
+    }
+
+    .${selectPrefixCls}-selection__rendered {
+      //display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 4px;
+      padding-bottom: 4px;
+    }
+
+    .${selectPrefixCls}-selection__clear {
+      @include selection__clear();
+      margin-top: 5px;
+      margin-right: 10px;
+    }
+
+    > ul > li {
+      margin-top: 4px;
+      height: 20px;
+      line-height: 20px;
+    }
+
+    .${selectPrefixCls}-selection__choice {
+      background-color: #f3f3f3;
+      border-radius: 4px;
+      cursor: default;
+      float: left;
+      padding: 0 8px;
+      margin-right: 4px;
+    }
+
+    .${selectPrefixCls}-selection__choice__remove {
+      @include iconfont-mixin();
+      color: #919191;
+      cursor: pointer;
+      display: inline-block;
+      font-weight: bold;
+      @include iconfont-size-under-12px(8px);
+      padding: 0 0 0 4px;
+      position: relative;
+      top: -1px;
+      left: 4px;
+      &:hover {
+        color: #333;
+      }
+
+      &:before {
+        content: "\e61e";
+      }
+    }
+  }
+
+  .${selectPrefixCls}-selection--single + .${selectPrefixCls}-dropdown {
+    .${selectPrefixCls}-dropdown-menu-item-selected {
+      background-color: tint($primary-color, 90%) !important;
+    }
+  }
+  .${selectPrefixCls}-selection--multiple + .${selectPrefixCls}-dropdown {
+    .${selectPrefixCls}-dropdown-menu-item {
+      padding: 7px 33px 7px 16px;
+    }
+    .${selectPrefixCls}-dropdown-menu-item-selected {
+      @include selected_icon();
+    }
+  }
+
+  &-dropdown {
+    display: none;
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    box-shadow: $overlay-shadow;
+    border-radius: 4px;
+    box-sizing: border-box;
+    z-index: 100;
+    left: -9999px;
+    top: -9999px;
+    position: absolute;
+    outline: none;
+
+    &-menu {
+      outline: none;
+      margin-bottom: 0;
+      padding-left: 0; // Override default ul/ol
+      list-style: none;
+      z-index: 9999;
+      max-height: 250px;
+      overflow: auto;
+
+      > li {
+        margin: 0;
+        padding: 0;
+      }
+
+      & > &-item {
+        position: relative;
+        display: block;
+        padding: 7px 16px;
+        font-weight: normal;
+        color: #666666;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:hover, &-active {
+          background-color: tint($primary-color, 90%) !important;
+        }
+
+        &-disabled {
+          color: #ccc;
+          cursor: not-allowed;
+          pointer-events: none;
+
+          &:hover {
+            color: #ccc;
+            background-color: #fff;
+            cursor: not-allowed;
+          }
+        }
+
+        &-divider {
+          height: 1px;
+          margin: 1px 0;
+          overflow: hidden;
+          background-color: #e5e5e5;
+          line-height: 0;
+        }
+      }
+    }
+  }
+
+  &-dropdown-container-open, &-open {
+    .${selectPrefixCls}-dropdown {
+      display: block;
+    }
+  }
+
+  &-search--dropdown {
+    display: block;
+    padding: 4px;
+    .${selectPrefixCls}-search__field {
+      padding: 4px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      outline: none;
+    }
+    &.${selectPrefixCls}-search--hide {
+      display: none;
+    }
+  }
+
+  &-open {
+    .${selectPrefixCls}-arrow:before {
+      @include ie-rotate(3);
+      @include rotate(270deg);
+    }
+    .${selectPrefixCls}-selection {
+      @include active();
+    }
+  }
+  &-combobox {
+    .${selectPrefixCls}-arrow {
+      display: none;
+    }
+    .${selectPrefixCls}-search--inline {
+      float: none;
+    }
+    .${selectPrefixCls}-search__field {
+      padding: 0 10px;
+      width: 100%;
+    }
+    .${selectPrefixCls}-selection__rendered {
+      padding: 0;
+    }
+  }
+}

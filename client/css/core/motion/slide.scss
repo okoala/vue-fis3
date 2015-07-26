@@ -1,0 +1,119 @@
+@mixin slide-motion($className, $keyframeName) {
+  @include make-motion($className, $keyframeName);
+  .${className}-enter {
+    opacity: 0;
+    animation-timing-function: $ease-out-circ;
+  }
+  .${className}-leave {
+    animation-timing-function: $ease-in-circ;
+  }
+}
+
+@include slide-motion(slide-up, slideUp);
+@include slide-motion(slide-down, slideDown);
+@include slide-motion(slide-left, slideLeft);
+@include slide-motion(slide-right, slideRight);
+
+$keyframes slideUpIn {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleY(1);
+  }
+}
+
+$keyframes slideUpOut {
+  0% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleY(0);
+  }
+}
+
+$keyframes slideDownIn {
+  0% {
+    opacity: 0;
+    transform-origin: 100% 100%;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: scaleY(1);
+  }
+}
+
+$keyframes slideDownOut {
+  0% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 100% 100%;
+    transform: scaleY(0);
+  }
+}
+
+$keyframes slideLeftIn {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleX(1);
+  }
+}
+
+$keyframes slideLeftOut {
+  0% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleX(0);
+  }
+}
+
+$keyframes slideRightIn {
+  0% {
+    opacity: 0;
+    transform-origin: 100% 0%;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 100% 0%;
+    transform: scaleX(1);
+  }
+}
+
+$keyframes slideRightOut {
+  0% {
+    opacity: 1;
+    transform-origin: 100% 0%;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 100% 0%;
+    transform: scaleX(0);
+  }
+}

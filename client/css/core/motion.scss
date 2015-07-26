@@ -1,0 +1,31 @@
+@mixin motion-common() {
+  animation-duration: @include 3s;
+  animation-fill-mode: both;
+  display: block !important;
+}
+
+@mixin make-motion($className, $keyframeName) {
+  .${className}-enter {
+    @include motion-common();
+    animation-play-state: paused;
+  }
+  .${className}-leave {
+    @include motion-common();
+    animation-play-state: paused;
+  }
+  .${className}-enter.${className}-enter-active {
+    animation-name: ~"${keyframeName}In";
+    animation-play-state: running;
+  }
+  .${className}-leave.${className}-leave-active {
+    animation-name: ~"${keyframeName}Out";
+    animation-play-state: running;
+  }
+}
+
+@import "motion/fade";
+@import "motion/move";
+@import "motion/other";
+@import "motion/slide";
+@import "motion/swing";
+@import "motion/zoom";
