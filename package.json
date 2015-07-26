@@ -38,7 +38,7 @@
     "lodash": "^3.9.3",
     "lusca": "^1.1.1",
     "swig": "^1.4.2",
-    "vue": "^0.12.7",
+    "vue": "^0.12.8",
     "vue-resource": "git://github.com/okoala/vue-resource.git",
     "vue-view": "git://github.com/okoala/vue-view.git",
     "webpack": "^1.9.12"
