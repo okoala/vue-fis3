@@ -5,6 +5,9 @@
 
 开发关键字：**MVVM**， **模块化**，**ES6**，**Combo**，**自动化部署**
 
+**建议使用vue + vuex + vue-loader + webpack的组合**
+[点击跳转查看](https://github.com/okoala/vue-vuex.git)
+
 ------
 
 包括：
