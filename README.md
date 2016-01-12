@@ -5,7 +5,7 @@
 
 开发关键字：**MVVM**， **模块化**，**ES6**，**Combo**，**自动化部署**
 
-**建议: 使用vue + vuex + vue-loader + webpack的组合**
+**另一套vue的解决方案：vue + vuex + vue-loader + webpack 组合**
 [点击跳转查看](https://github.com/okoala/vue-vuex.git)
 
 ------
@@ -109,9 +109,9 @@
       "components": [
         "vue",
         "vue-resource",
-        "vue-view"
+        "vue-router"
       ]
-      说明指定vue,vue-resource,vue-view,这三个为前端库。
+      说明指定vue,vue-resource,vue-router,这三个为前端库。
       使用的时候可以直接require('vue'),require('vue-resource')。
       当然你需要确认库是否已经在node_modules里了。
 
