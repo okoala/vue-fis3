@@ -200,7 +200,7 @@ export default {
 }
 </script>
 <style>
-@import '../../../client/css/base/variable';
+@import '../styles/css/base/variable';
 
 .feed-sidebar-list .feed-default-logo,
 .feed-sidebar-list .feed-logo,
