@@ -42,17 +42,6 @@
 
     // 安装fis及相关插件
     npm i -g fis3 (需要3.0.7以上)
-    npm i -g fis3-hook-module
-    npm i -g fis-parser-sass3
-    npm i -g fis-parser-babel2
-    npm i -g fis-optimizer-uglify-js
-    npm i -g fis-optimizer-html-minifier
-    npm i -g fis-optimizer-clean-css
-
-    // 其他编译工具
-    npm i -g cwebp-bin
-    npm i -g eslint
-    npm i -g babel-eslint
 
     // 其他构建工具
     npm i -g gulp
@@ -69,7 +58,6 @@
 
     // 类似livereload的工具
     npm i -g browser-sync
-    npm i -g browser-sync-vue
 
     // 发布工具
     npm i -g pm2
