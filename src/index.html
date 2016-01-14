@@ -39,11 +39,7 @@
              * require.async函数会根据require.config中的依赖关系去加载这些模
              * 块及其依赖的模块（包括对应的css），都完成后才会执行回调
              */
-            require.async(['boot'], function(boot) {
-                boot({
-                    _csrf: "{{csrfToken}}"
-                });
-            });
+            require.async(['/']);
         </script>
 
     </body>

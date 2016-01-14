@@ -1,33 +1,33 @@
 'use strict';
 
 import Vue from 'vue'
+import VueRouter from 'vue-router'
+import { configRouter } from './route'
 
 // 暴露vue到全局作用下，browser sync
 window.Vue = Vue
 
-// 使用resource插件
-Vue.use(require('vue-resource'))
-
+Vue.config.debug = true
 // 使用vue view插件
-Vue.use(require('vue-view'))
+Vue.use(VueRouter)
 
 // 加载directive组件
-Vue.directive('lazyload', require('./directives/lazyload.js'))
-Vue.directive('minheight', require('./directives/minheight.js'))
+Vue.directive('lazyload', require('./util/directives/lazyload.js'))
+Vue.directive('minheight', require('./util/directives/minheight.js'))
 
 // 加载动画效果
-Vue.transition('shake', require('./effects/shake'))
-Vue.transition('flash', require('./effects/flash'))
-Vue.transition('bigIn', require('./effects/big-in'))
-Vue.transition('slideDown', require('./effects/slide-down'))
-Vue.transition('slideVertical', require('./effects/slide-vertical'))
-Vue.transition('slideHorizontal', require('./effects/slide-horizontal'))
+Vue.transition('shake', require('./util/effects/shake'))
+Vue.transition('flash', require('./util/effects/flash'))
+Vue.transition('bigIn', require('./util/effects/big-in'))
+Vue.transition('slideDown', require('./util/effects/slide-down'))
+Vue.transition('slideVertical', require('./util/effects/slide-vertical'))
+Vue.transition('slideHorizontal', require('./util/effects/slide-horizontal'))
 // 子孙的动画系列
-Vue.transition('childSlideIn', require('./effects/child-slide-in'))
+Vue.transition('childSlideIn', require('./util/effects/child-slide-in'))
 
 // 加载filter
-Vue.filter('dateFormat', require('./filters/dateFormat'))
-Vue.filter('webp', require('./filters/webp'))
+Vue.filter('dateFormat', require('./util/filters/dateFormat'))
+Vue.filter('webp', require('./util/filters/webp'))
 Vue.filter('encode', function(str) {
     return encodeURIComponent(str)
 });
@@ -35,13 +35,17 @@ Vue.filter('decode', function(str) {
     return decodeURIComponent(str)
 });
 
-export default function(options) {
-    // 若有的http请求头都带上x-csrf-token，增强安全性。
-    Vue.http.headers.common['x-csrf-token'] = options._csrf
-    // 设置响应成功的code.
-    Vue.http.response.success['status'] = 1
-    // 设置post的为form形式。
-    Vue.http.options.emulateJSON = true
-    // 加载路由.
-    Vue.use(require('./routes'))
-}
+// 路由相关
+// create router
+const router = new VueRouter({
+  hashbang: true, //hash路由
+  history: true,
+  saveScrollPosition: true,
+  suppressTransitionError: true
+})
+// configure router
+configRouter(router)
+// boostrap the app
+router.start(Vue.extend(App), '#root')
+// just for debugging
+window.router = router
