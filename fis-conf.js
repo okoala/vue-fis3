@@ -74,6 +74,10 @@ fis
     })
   })
 
+  .match(/\.vue$/i, {
+    parser: plugin('vue')
+  })
+
   .match(/(\.webp)\.(png|jpg)$/i, {
     postprocessor: plugin('webp', {
       quality: 50

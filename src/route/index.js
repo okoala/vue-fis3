@@ -1,9 +1,9 @@
-import { setDocTitle } from '../util'
+import { setDocTitle } from '../util/index'
 
 export default function configRouter (router) {
   router.map({
     '/': {
-      component: require('../views/Home.vue'),
+      component: require('../views/App.vue'),
       title: '首页'
     },
     '/:rssId': {
