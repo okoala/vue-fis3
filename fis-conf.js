@@ -75,6 +75,7 @@ fis
   })
 
   .match(/\.vue$/i, {
+    rExt: '.js',
     parser: plugin('vue')
   })
 
