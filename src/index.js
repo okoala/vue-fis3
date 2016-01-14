@@ -2,7 +2,7 @@
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { configRouter } from './route'
+import configRouter from './route'
 
 // 暴露vue到全局作用下，browser sync
 window.Vue = Vue

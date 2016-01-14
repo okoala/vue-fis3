@@ -1,11 +1,7 @@
-'use strict'
-
 import Vue from 'vue'
+import dom from './dom'
 
-let _ = Vue.util
-let extend = _.extend
-
-exports.isEmptyObject = function(obj) {
+export function isEmptyObject (obj) {
   var name
   for ( name in obj ) {
     return false
@@ -13,18 +9,30 @@ exports.isEmptyObject = function(obj) {
   return true
 }
 
-extend(exports, {
-  dom: require('./dom')
-})
+export function setDocTitle (title) {
+  document.title = title
 
-extend(exports, {
-  noop: function() {}
-})
+  // 部分手机不能动态设置title，需要通过hack的手段处理~~
+  if ((/iphone|ipad/gi).test(window.navigator.appVersion)) {
+    let iframe = document.createElement('iframe')
+    iframe.src = '/favicon.ico'
+    iframe.frameBorder = 'no'
+    iframe.style.width="0"
+    iframe.style.height="0"
+    let $iframe = dom(iframe)
+    let fn = function() {
+      setTimeout(() => {
+        $iframe.off('load', fn).remove()
+      }, 0)
+    };
+    $iframe.on('load', fn)
+    document.body.appendChild(iframe)
+  }
+}
 
-extend(exports, {
-	snabbt: require('./snabbt')
-})
-
-extend(exports, require('./envi'))
-extend(exports, require('./uuid'))
+export * from './dom'
+export function noop () {}
+export * from './snabbt'
+export * from './envi'
+export * from './uuid'
 

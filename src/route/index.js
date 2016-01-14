@@ -1,14 +1,14 @@
 import { setDocTitle } from '../util'
 
-export function configRouter (router) {
+export default function configRouter (router) {
   router.map({
     '/': {
       component: require('../views/Home.vue'),
       title: '首页'
     },
     '/:rssId': {
-      component: require('../views/p-index/p-index')
-    }
+      component: require('../views/App.vue')
+    },
     '*': {
       component: require('../views/NotFound.vue')
     }

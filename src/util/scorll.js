@@ -1,9 +1,9 @@
 'use strict';
 
-import Vue from 'vue';
-import { dom as $ } from 'util';
+import Vue from 'vue'
+import { dom as $ } from './dom'
 
-const _ = Vue.util;
+const _ = Vue.util
 
 const rAF = window.requestAnimationFrame  ||
     window.webkitRequestAnimationFrame  ||

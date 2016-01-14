@@ -1,32 +1,27 @@
-'use strict';
-
 /**
  * 水平方向移动
  *
  */
 import Vue from 'vue';
-import { dom, snabbt } from 'util';
+import snabbt from '../snabbt'
+import dom from '../dom'
 
 export default {
+  beforeEnter(el) {
 
-    beforeEnter(el) {
-
-    },
-
-    enter(el, done) {
-        snabbt(el, {
-            fromPosition: ['-100%', 0, 0],
-            position: [0, 0, 0],
-            duration: 300,
-            easing: 'linear',
-            complete() {
-                done();
-            }
-        });
-    },
-
-    leave(el, done) {
-        done();
-    }
-
+  },
+  enter(el, done) {
+    snabbt(el, {
+      fromPosition: ['-100%', 0, 0],
+      position: [0, 0, 0],
+      duration: 300,
+      easing: 'linear',
+      complete() {
+        done()
+      }
+    })
+  },
+  leave(el, done) {
+    done()
+  }
 }
