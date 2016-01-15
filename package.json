@@ -65,6 +65,7 @@
   "components": [
     "vue",
     "vue-resource",
-    "vue-router"
+    "vue-router",
+    "vueify-insert-css"
   ]
 }
