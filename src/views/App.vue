@@ -56,7 +56,7 @@
 
 </template>
 <script>
-import restApi from '../../api'
+import restApi from '../api'
 import cHeader from '../components/Header.vue'
 
 export default {
