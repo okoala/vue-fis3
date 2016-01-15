@@ -136,6 +136,16 @@ fis
     url: '${urlPrefix}/c/${version}/$1',
     release: '/public/c/${version}/$1'
   })
+  .match(/^\/src\/(.*\.vue)$/i, {
+    moduleId: '${version}/$1',
+    id: '${version}/$1',
+    isMod: true,
+    isES6: true,
+    isComponent: true,
+    useHash: false,
+    url: '${urlPrefix}/c/${version}/$1',
+    release: '/public/c/${version}/$1'
+  })
   .match(/^\/src\/(.*)\.(scss|css)$/i, {
     moduleId: '${version}/$1.css',
     id: '${version}/$1.css',
@@ -162,6 +172,7 @@ fis
     useCache: false,
     isViews: true,
     isES6: false,
+    isMod: false,
     url: '${urlPrefix}/${version}/$1',
     release: '/public/${version}/$1'
   })
