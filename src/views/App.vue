@@ -28,7 +28,7 @@
         <div v-for="rssItem in currentRss.data.items" v-show="rssItem.data.length">
             <div class="feed-items-timeline">{{rssItem.dataName}}</div>
             <div class="feed-item" v-for="item in rssItem.data">
-              <div class="feed-thumb" style="background-image: url({{item.thumb}})">
+              <div class="feed-thumb" :style="'background-image: url('+item.thumb+')'">
                 <a :href="item.url" target="_blank"><img :src="item.thumb" alt="Flux – Joseph a avoué"></a>
               </div>
               <div class="feed-describe">
@@ -56,7 +56,7 @@
 
 </template>
 <script>
-import restApi from '../api'
+import restApi from '../api/index'
 import cHeader from '../components/Header.vue'
 
 export default {
@@ -96,7 +96,7 @@ export default {
   },
   components: {cHeader},
   ready () {
-    let params = this.$data.$router.params
+    let params = this.$route.params
     let rssId = params && params.rssId ? params.rssId : 0
 
     let setData = function (data) {
@@ -120,20 +120,20 @@ export default {
 
     if (rssId === 0) {
       restApi.recom.get()
-        .success(res => {
-          setData.call(this, res.data)
+        .then(res => {
+          setData.call(this, res.data.data)
         })
-        .error(err => {
+        .catch(err => {
 
         })
     } else {
       restApi.rss.get({
           id: rssId
         })
-        .success(res => {
+        .then(res => {
           setData.call(this, res.data)
         })
-        .error(err => {
+        .catch(err => {
 
         })
     }
