@@ -118,8 +118,8 @@ fis
   })
 
   .match(/^\/src\/(.*)$/i, {
-    url : '${urlPrefix}/c/${version}/$1',
-    release : '/public/c/${version}/$1'
+    url: '${urlPrefix}/c/${version}/$1',
+    release: '/public/c/${version}/$1'
   })
   // components相关
   .match(/^\/src\/(.*\.tpl)$/i, {
@@ -128,22 +128,22 @@ fis
   })
   .match(/^\/src\/(.*\.js)$/i, {
     moduleId: '${version}/$1',
-    id : '${version}/$1',
-    isMod : true,
-    isES6 : true,
-    isComponent : true,
-    useHash : false,
-    url : '${urlPrefix}/c/${version}/$1',
-    release : '/public/c/${version}/$1'
+    id: '${version}/$1',
+    isMod: true,
+    isES6: true,
+    isComponent: true,
+    useHash: false,
+    url: '${urlPrefix}/c/${version}/$1',
+    release: '/public/c/${version}/$1'
   })
   .match(/^\/src\/(.*)\.(scss|css)$/i, {
     moduleId: '${version}/$1.css',
-    id : '${version}/$1.css',
-    isMod : true,
-    useSprite : true,
-    useHash : false,
-    url : '${urlPrefix}/c/${version}/$1.$2',
-    release : '/public/c/${version}/$1.$2'
+    id: '${version}/$1.css',
+    isMod: true,
+    useSprite: true,
+    useHash: false,
+    url: '${urlPrefix}/c/${version}/$1.$2',
+    release: '/public/c/${version}/$1.$2'
   })
   .match(/^\/src\/(.*)(\.webp)\.(png|jpg)$/i, {
     useWebP: true,
@@ -153,25 +153,26 @@ fis
 
   // styles文件夹相关
   .match(/^\/src\/styles\/(.*)$/i, {
-    useSprite : true,
-    isViews : true,
-    url : '${urlPrefix}/${version}/$1',
-    release : '/public/${version}/$1'
+    useSprite: true,
+    isViews: true,
+    url: '${urlPrefix}/${version}/$1',
+    release: '/public/${version}/$1'
   })
   .match(/^\/src\/styles\/(.*\.(?:html?|js))$/i, {
     useCache: false,
     isViews: true,
     isES6: false,
-    url : '${urlPrefix}/${version}/$1',
-    release : '/public/${version}/$1'
+    url: '${urlPrefix}/${version}/$1',
+    release: '/public/${version}/$1'
   })
   .match(/^\/src\/(index\.html)/i, {
-    url : '${urlPrefix}/${version}/$1',
-    release : '/public/${version}/$1'
+    isViews: true,
+    url: '${urlPrefix}/${version}/$1',
+    release: '/public/${version}/$1'
   })
   .match(/^\/public\/(.*)$/i, {
-    url : '/public/$1',
-    release : '/public/$1'
+    url: '/public/$1',
+    release: '/public/$1'
   })
 
   // DOC 文件夹不发布
@@ -181,19 +182,19 @@ fis
 
   // tmp文件夹
   .match(/^\/\.tmp\/(.*\.js)$/i, {
-    moduleId : '$1',
-    id : '$1',
+    moduleId: '$1',
+    id: '$1',
     isBaseMod: true,
     isES6: false,
-    isMod : true,
-    useHash : false,
-    url : '${urlPrefix}/c/$1',
-    release : '/public/c/$1'
+    isMod: true,
+    useHash: false,
+    url: '${urlPrefix}/c/$1',
+    release: '/public/c/$1'
   })
 
   // release一下，不然在postpackager无法获取到数据
   .match('package.json', {
-    release : '$0'
+    release: '$0'
   })
 
   .match('map.json', {
@@ -206,7 +207,7 @@ fis
   .media('deploy')
 
   .match(/\.nvmrc$/i, {
-    release : '$0'
+    release: '$0'
   })
 
   .match(/^\/src\/styles\/(.*)$/i, {
@@ -251,11 +252,11 @@ fis
   // server文件不编译
   .match(/^\/config\/(.*)$/i, {
     useCompile: false,
-    release : '/config/$1'
+    release: '/config/$1'
   })
 
   // server文件不编译
   .match(/^\/server\/(.*)$/i, {
     useCompile: false,
-    release : '/server/$1'
+    release: '/server/$1'
   })
