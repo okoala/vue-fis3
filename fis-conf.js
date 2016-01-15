@@ -136,15 +136,14 @@ fis
     url: '${urlPrefix}/c/${version}/$1',
     release: '/public/c/${version}/$1'
   })
-  .match(/^\/src\/(.*\.vue)$/i, {
-    moduleId: '${version}/$1',
-    id: '${version}/$1',
+  .match(/^\/src\/(.*)(\.vue)$/i, {
+    moduleId: '${version}/$1.js',
+    id: '${version}/$1.js',
     isMod: true,
-    isES6: true,
     isComponent: true,
     useHash: false,
-    url: '${urlPrefix}/c/${version}/$1',
-    release: '/public/c/${version}/$1'
+    url: '${urlPrefix}/c/${version}/$1$2',
+    release: '/public/c/${version}/$1$2'
   })
   .match(/^\/src\/(.*)\.(scss|css)$/i, {
     moduleId: '${version}/$1.css',

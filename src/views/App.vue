@@ -199,7 +199,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang='sass'>
 @import '../styles/css/base/variable';
 
 .feed-sidebar-list .feed-default-logo,

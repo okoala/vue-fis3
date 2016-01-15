@@ -3,8 +3,3 @@
   <p>页面不存在!</p>
 </div>
 </template>
-<script>
-export default {
-
-}
-</script>
