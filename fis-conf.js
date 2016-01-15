@@ -151,7 +151,7 @@ fis
     release: '/public/c/${version}/$1.$3'
   })
 
-  // client文件夹相关
+  // styles文件夹相关
   .match(/^\/src\/styles\/(.*)$/i, {
     useSprite : true,
     isViews : true,
@@ -162,6 +162,10 @@ fis
     useCache: false,
     isViews: true,
     isES6: false,
+    url : '${urlPrefix}/${version}/$1',
+    release : '/public/${version}/$1'
+  })
+  .match(/^\/src\/(index\.html)/i, {
     url : '${urlPrefix}/${version}/$1',
     release : '/public/${version}/$1'
   })

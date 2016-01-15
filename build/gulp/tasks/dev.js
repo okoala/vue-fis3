@@ -54,7 +54,7 @@ gulp.task('fis3-clean', function() {
     return gulp.src('process.env["LOCALAPPDATA"]' + '/.fis3-tmp/cache', {read: false})
         .pipe(clean());
 });
-gulp.task('fis3-release', ['fis3-clean', 'webpack'], shell.task('fis3 release --verbose -d ' + path.resolve(config.root, config.dest)));
+gulp.task('fis3-release', ['fis3-clean', 'webpack'], shell.task('fis3 release -d ' + path.resolve(config.root, config.dest)));
 gulp.task('fis3-watch',  shell.task('fis3 release -w -d ' + path.resolve(config.root, config.dest)));
 
 // 对外命令
