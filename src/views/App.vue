@@ -67,21 +67,21 @@ export default {
         id: 0,
         name: '小云精选',
         url: '/',
-        image: __uri('images/0.png'),
+        image: __uri('../styles/img/0.png'),
         desc: '订阅内容',
         isActive: false
       }, {
         id: 14,
         name: 'Dribbble',
         url: 'https://dribbble.com',
-        image: __uri('images/14.png'),
+        image: __uri('../styles/img/14.png'),
         desc: 'Dribbble - 优秀设计师的聚集地',
         isActive: false
       }, {
         id: 34,
         name: 'UI中国',
         url: 'http://www.ui.cn/',
-        image: __uri('images/34.png'),
+        image: __uri('../styles/img/34.png'),
         desc: 'UI中国 - 国内最专业的UI设计平台',
         isActive: false
       }],

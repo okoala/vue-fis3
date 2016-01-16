@@ -140,6 +140,7 @@ fis
     moduleId: '${version}/$1.js',
     id: '${version}/$1.js',
     isMod: true,
+    isJsLike: true,
     isComponent: true,
     useHash: false,
     url: '${urlPrefix}/c/${version}/$1$2',

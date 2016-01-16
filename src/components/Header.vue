@@ -3,7 +3,7 @@
   <div class="g-logo">
     <h1>
       <a href="/" title="腾讯设计导航">
-        <img src="logo.png" alt="腾讯设计导航">
+        <img :src="image.logo" alt="腾讯设计导航">
         <span class="title">设计导航</span>
       </a>
     </h1>
@@ -23,3 +23,14 @@
   </div>
 </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      image: {
+        logo: __uri('../styles/img/logo.png')
+      }
+    }
+  }
+}
+</script>
