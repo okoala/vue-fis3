@@ -53,7 +53,7 @@
     "fis-parser-babel2": "^1.0.0",
     "fis-parser-sass3": "0.0.7",
     "fis3-hook-module": "^1.2.2",
-    "fis3-parser-vue": "0.0.1",
+    "fis3-parser-vue": "0.0.2",
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.1",
     "gulp-csscomb": "^3.0.6",
