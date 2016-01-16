@@ -39,10 +39,8 @@ Vue.filter('decode', function(str) {
 // 路由相关
 // create router
 const router = new VueRouter({
-  hashbang: true, //hash路由
   history: true,
-  saveScrollPosition: true,
-  suppressTransitionError: true
+  saveScrollPosition: true
 })
 // configure router
 configRouter(router)
