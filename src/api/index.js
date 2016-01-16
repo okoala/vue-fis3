@@ -39,5 +39,5 @@ export default {
   // 获取推荐内容
   recom : Vue.resource('/api/Like/Reader/Recom'),
   // 获取36kr的内容
-  rss: Vue.resource('/api/Like/Reader/GetContent/site_id/:id')
+  rss: Vue.resource('/api/Like/Reader/GetContent/site_id/{id}')
 }

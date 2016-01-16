@@ -4,14 +4,23 @@ export default function configRouter (router) {
   router.map({
     '/': {
       component: require('../views/App.vue'),
-      title: '首页'
-    },
-    '/:rssId': {
-      component: require('../views/App.vue')
+      title: '首页',
+      subRoutes: {
+        '/:rssId': {
+          name: 'rss',
+          component: require('../views/RSS.vue'),
+          title: 'RSS'
+        }
+      }
     },
     '*': {
       component: require('../views/NotFound.vue')
     }
+  })
+
+  router.redirect({
+    // 重定向 / 到 /0
+    '/': '/0',
   })
 
   // global before
