@@ -32,17 +32,17 @@
                 <a :href="item.url" target="_blank"><img :src="item.thumb" alt="Flux – Joseph a avoué"></a>
               </div>
               <div class="feed-describe">
-                <h2 class="feed-title"><a :href="item.url" target="_blank">{{title}}</a></h2>
-                <p class="feed-description">{{description}}</p>
+                <h2 class="feed-title"><a :href="item.url" target="_blank">{{item.title}}</a></h2>
+                <p class="feed-description">{{item.description}}</p>
                 <div class="feed-item-info">
                   <div class="feed-item-count">
                     <span class="feed-fav">
                       <i class="g-icon icon-fav favHandler"></i>
-                      <i class="feed-fav-total">{{faved}}</i>
+                      <i class="feed-fav-total">{{item.faved}}</i>
                     </span>
                     <span class="feed-view">
                       <i class="g-icon icon-viewed"></i>
-                      <i class="feed-view-total">{{click}}</i>
+                      <i class="feed-view-total">{{item.click}}</i>
                     </span>
                   </div>
                 </div>
