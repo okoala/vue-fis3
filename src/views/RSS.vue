@@ -94,7 +94,14 @@ export default {
       }
     }
   },
-  components: {cHeader},
+
+  components: { cHeader },
+
+  // 禁止服用模块，每次调用都要走完成流程。
+  route: {
+    canReuse: false
+  },
+
   ready () {
     let params = this.$route.params
     let rssId = params && params.rssId ? params.rssId : 0
