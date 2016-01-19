@@ -104,7 +104,9 @@ export default {
 
   ready () {
     let params = this.$route.params
-    let rssId = params && params.rssId ? params.rssId : 0
+    let rssId = params && params.rssId ? params.rssId : 'rss_0'
+
+    rssId = parseInt(rssId.replace('rss_', ''), 10)
 
     let setData = function (data) {
       this.currentRss = this.rss.filter(item => {
@@ -201,7 +203,7 @@ export default {
     },
     chooseRss (item, index) {
       const rssId = item.id
-      this.$route.router.go({name: 'rss', params: {rssId}})
+      this.$route.router.go({name: 'rss', params: {rssId: 'rss_' + rssId}})
     }
   }
 }
