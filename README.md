@@ -34,10 +34,6 @@
 
 ------
 
-[点击查看demo](http://idesign.kulife.net/)
-
-------
-
 #### 快速开始
 
     // 安装fis及相关插件
@@ -85,11 +81,6 @@
 
 ------
 
-#### 目录结构
-
-![](http://i1.tietuku.com/c13327378bc09699.png)
-
------
 #### 项目说明
     1. 无分号，2Tab缩进.
 
@@ -109,8 +100,8 @@
       这样可以同时生成webp和(png, jpg)两个版本的图片, 然后通过filter webp进行自动切换.
 
     5. 新手可以使用我的编辑器配置:
-      Sublime Text 3: https://github.com/okoala/sublime-bak.git
-      Atom: https://github.com/okoala/atom-bak.git
+      Sublime Text 3: https://github.com/okoala/sublime-win-bak.git
+      Atom: https://github.com/okoala/atom-win-bak.git
       已经集成目前比较流行的插件~~项目解压覆盖到对应的文件, 然后重启编辑器即可.
 
 
