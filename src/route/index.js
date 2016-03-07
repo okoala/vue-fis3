@@ -3,18 +3,24 @@ import { setDocTitle } from '../util/index'
 export default function configRouter (router) {
   router.map({
     '/': {
-      component: require('../views/App.vue'),
+      component (resolve) {
+        require.async(['../views/App.vue'], resolve)
+      },
       title: '首页',
       subRoutes: {
         '/:rssId': {
           name: 'rss',
-          component: require('../views/RSS.vue'),
+          component (resolve) {
+            require.async(['../views/RSS.vue'], resolve)
+          },
           title: 'RSS'
         }
       }
     },
     '*': {
-      component: require('../views/NotFound.vue')
+      component (resolve) {
+        require.async(['../views/NotFound.vue'], resolve)
+      }
     }
   })
 
