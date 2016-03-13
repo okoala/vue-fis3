@@ -100,8 +100,10 @@
       这样可以同时生成webp和(png, jpg)两个版本的图片, 然后通过filter webp进行自动切换.
 
     5. 新手可以使用我的编辑器配置:
-      Sublime Text 3: https://github.com/okoala/sublime-win-bak.git
-      Atom: https://github.com/okoala/atom-win-bak.git
+      Sublime Text 3 for Mac: https://github.com/okoala/sublime-mac-bak.git
+      Sublime Text 3 for Win: https://github.com/okoala/sublime-win-bak.git
+      Atom for Mac: https://github.com/okoala/atom-mac-bak.git
+      Atom for Win: https://github.com/okoala/atom-win-bak.git
       已经集成目前比较流行的插件~~项目解压覆盖到对应的文件, 然后重启编辑器即可.
 
 
